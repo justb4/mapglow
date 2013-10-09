@@ -1,0 +1,133 @@
+<!--
+  ~ This file is part of MapGlow.
+  ~
+  ~ MapGlow is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MapGlow.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  ~ @author Just van den Broecke - OpenGeoGroep.nl 2011
+  -->
+
+<div class="hr-page-content">
+	<div class="hr-page-title">Documentation</div>
+	<div class="hr-page-text">
+		<p>More extended documentation is planned.
+			MapGlow is currently a Python MapScript addition to UMN MapServer (though we
+			plan to integrate with other WMS servers like GeoServer as well).
+			It intercepts WMS GetMap and GetLegendGraphic requests for heatmap generation
+			from MapServer Layer Vector (Point-type) sources when the STYLE(S) parameter
+			starts with the magic word "heat". In that case MapGlow will query the MS Layer feature data
+			and draw a transparent overlay heatmap. The STYLES parameter also determines
+			the parametrization of how the heatmap should be drawn in terms of gradient
+			colors and other parameters. MapGlow will delegate processing to the standard MapServer OWS dispatching
+			for other requests like GetCapabilities
+			or when no STYLE(S) is provided.
+		</p>
+
+		<h3>Algorithms</h3>
+
+		<p>
+			At this moment there is one algorithm called "seth" based on the Free heatmap.py
+			program from <a href="http://www.sethoscope.net/heatmap/">www.sethoscope.net</a>.
+			This algorithm is in our opinion (loosely) based
+			on <a href="http://en.wikipedia.org/wiki/Inverse_distance_weighting">Inverse Distance Weighting (IDW)</a>.
+			We are investigating other algorithms like
+			<a href="http://www.curious-creature.org/2006/09/20/new-blendings-modes-for-java2d/">Romain Guy's Blend
+				Composite</a>
+			as well mainly for reasons of
+			performance.
+			Other implementations to investigate include:
+			<a href="http//jjguy.com/heatmap">jjguy.com/heatmap (Python)</a>,
+			<a href="http://code.google.com/p/gheat">code.google.com/p/gheat (Multilang, but Google Maps only?))</a>,
+			<a href="http://blog.felipebarriga.cl/olheatmap_demo">blog.felipebarriga.cl/olheatmap_demo (JavaScript)</a>
+			All algorithms will be pluggable so you can supply yours as well.
+		</p>
+
+		<h3>STYLE Parameter Encoding</h3>
+
+		<p>
+			The general format is
+			<strong>STYLES=heat/&lt;algorithm_type&gt;/&lt;algorithm_parms&gt;</strong>.
+		</p>
+
+		<p>
+			Parameters to the Seth algorithm are: gradient, radius and decay.
+			<strong>gradient</strong> determines the color range (0..256), <strong>radius</strong>
+			(pixels) how far each "heat-point's" influence reaches and
+			<strong>decay</strong> is how fast multiple heat values approach zero
+			by decreasing distance from the "heat-point".
+			This is encoded as follows for example:
+			<strong>STYLES=heat/seth/red-yellow-trans2/12/0.5</strong>.
+			Here the gradient is predefined "red-yellow-trans2" (see below), the radius is
+			12 pixels and the decay is 0.5.
+			See <a href="/wms/?SERVICE=WMS&REQUEST=GetLegendGraphic&STYLE=heat/seth/red-yellow-trans2/5/0.4">this
+			gradient here.</a>
+		</p>
+		<table border="0" cellspacing="4" cellpadding="0">
+			<tr>
+				<td><img src="/site/media/gradient-red-yellow-trans2.png" alt="Gradient example file"/></td>
+				<td><img src="/site/media/gradient-blue-green.png" alt="Gradient example file"/></td>
+			</tr>
+		</table>
+		<p>
+			More advanced is that the gradient can be supplied by the client. This is done
+			as one or more tuples of 5 parameters: (Stop, Red, Green, Blue, Transparency).
+			Each value is a float between 0 and 1.
+			Red, Green, Blue, Transparency are RGBA valuies and Stop is where this part of the gradient should stop.
+			For example <strong>STYLES=heat/seth/0,0,0,1,0,0.75,1,0,0,1,0.9,1,1,0,0/5/0.2</strong>
+			indicates a gradient spec of 0,0,0,1,0,0.75,1,0,0,1,0.9,1,1,0,0. These are 3 tuples
+			(0,0,0,1,0) (0.75,1,0,0,1) (0.9,1,1,0,0).
+		</p>
+
+		<h3>More examples</h3>
+
+		<p>See also the <a href="/site/content/test-urls.html">Test URLs page</a>
+		</p>
+
+		<h3>Configuration</h3>
+
+		<p>Basically MapServer is configured as usual, using a MapFile. The MapGlow
+			interceptor can be invoked simply by supplying a Python CGI with the following lines:
+		</p>
+<pre>
+from mapglow_ms import MapGlowMS
+
+# Main entry: call MapGlow OWS with the mapfile parm
+MapGlowMS('../config/mapserver/app1.map').ows_req()
+
+</pre>
+
+		<h3>Other Uses</h3>
+
+		<p>
+			Heatmap generation with MapGlow is not just available via WMS.
+			Since the heatmap generation modules are totally decoupled from the MapScript
+			Python CGI handlers, heatmaps can also be generated via the commandline
+			or custom CGI scripts.
+		</p>
+
+		<p>
+			For example, the following command generates an 800x600
+			heatmap from the commandline using the points file "mydata.coords"
+			as input:
+
+		</p>
+ <pre>
+	 heatmap_seth.py -p .mydata.coords -G mygradient.png -r 5 -d 0.95 -W 800 -hH 600 -o myheatmap.png
+
+ </pre>
+		<p>
+			Another scenario is using heatmap generation within a CGI environment where
+			a client POSTs a points file or points in a form.
+		</p>
+	</div>
+</div>

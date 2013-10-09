@@ -1,0 +1,1 @@
+../wms/heatmap_seth.py -v -p ../data/schoorl-1000.coords  -r 5  --width 400 -o test-heatmap.png  --decay 0.95  --gradient ../config/gradients/gradient-red-yellow-trans2.png 

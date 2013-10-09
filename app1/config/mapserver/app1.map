@@ -1,0 +1,139 @@
+MAP
+  IMAGETYPE      PNG
+  EXTENT 4 50 6 54
+  SIZE           400 300
+  IMAGECOLOR     255 255 255
+  SHAPEPATH ../../data
+
+  PROJECTION
+     "init=epsg:4326"
+  END
+
+  SYMBOL
+    NAME "circle"
+    TYPE ellipse
+    FILLED true
+    POINTS
+      1 1
+    END
+  END
+
+  WEB
+      METADATA
+		"ows_title"                  "WMS/WFS Server for MapGlow Demos" ## REQUIRED
+		"ows_extent" 				 "3 50 6 54"
+		"wms_srs" 					 "epsg:4326 epsg:900913"
+		"wfs_srs"                    "EPSG:4326" ## Recommended
+#		"wfs_maxfeatures"			  "5000"
+		"ows_onlineresource"         "http://mapglow.org/wms?" ## Recommended
+		"ows_service_onlineresource"  "http://mapglow.org/wms?" ## Recommended
+		"ows_abstract"               "This service demonstrates dynamic heatmap generation using standard WMS " ## Recommended
+      END
+  END
+
+  # Start of LAYER DEFINITIONS ------------
+  LAYER # States polygon layer begins here
+    NAME         tracepoints
+    TYPE         POINT
+	EXTENT 3 50 6 54
+
+    METADATA
+     "ows_title"             "Georambling Tracepoints" ##REQUIRED
+	 "wfs_version" 			 "1.1.0"
+     "wms_srs"               "EPSG:4326" ## REQUIRED
+     "wfs_srs"               "EPSG:4326" ## REQUIRED
+	 "wms_feature_info_mime_type" "text/xml"
+     "gml_include_items"     "all" ## Optional (serves all attributes for layer)
+     "gml_featureid"         "id" ## REQUIRED
+     "mapglow_feat_density"	 "0.003" # density of features per pixel (max features per query = width * height * density)
+     "mapglow_table_name"	 "gw_tracepoint"
+     "mapglow_table_id_col"	 "id"
+     "mapglow_table_geom_col" "point"
+    END
+	TEMPLATE "template.html"
+
+	CONNECTIONTYPE postgis
+	CONNECTION "user=oaseuser password=oase dbname=georambling host=localhost"
+#	DATA "point from gw_tracepoint"
+# 	select "id",encode(AsBinary(force_collection(force_2d("point")),'NDR'),'hex') as geom,"id" from (select id,point from gw_tracepoint) as subquery where point
+#	&& GeomFromText('POLYGON((0.838579 51.862519,0.838579 54.060615,10.034136 54.060615,10.034136 51.862519,0.838579 51.862519))',4326)
+	DATA "point from (select id,point from gw_tracepoint) as subquery using unique id using SRID=4326"
+#	DATA "point from (select id,point from gw_tracepoint order by random() limit 30) as foo using SRID=4326"
+#   DATA "the_geom from (select g.gid, ST_Simplify(g.the_geom, 10.0) as the_geom from geotable g order by ST_Area(g.the_geom) desc limit 10) as subquery unique gid using srid=4326"
+#   This would be the optimal query but sadly it does not work
+#   See http://trac.osgeo.org/mapserver/ticket/3274
+#	DATA "the_geom from (select g.id, g.point as the_geom from gw_tracepoint g where g.point && GeomFromText('POLYGON((-4.275557 50.242394,-4.275557 54.685361,14.115557 54.685361,14.115557 50.242394,-4.275557 50.242394))',4326) order by random() limit 3000) as subquery using unique id using srid=4326"
+	PROCESSING "CLOSE_CONNECTION=DEFER"
+	STATUS       OFF
+    DUMP TRUE             ## REQUIRED  FOR WFS
+	TOLERANCE 10
+
+    CLASS
+      NAME       "TracePoints"
+	  STYLE
+		COLOR 0 0 2550
+		SYMBOL "circle"
+		SIZE 3
+ 	  END
+ 	END
+  END # layer ends here
+
+
+	LAYER
+		NAME brandweer
+		TYPE POINT
+#		EXTENT 3.313558 47.974766 5.070747 52.440378
+		EXTENT 4 50 6 54
+		METADATA
+			"ows_title"             "Brandweer Amsterdam 2006-2010" ##REQUIRED
+			"wfs_version" 			"1.1.0"
+			"wms_srs"               "EPSG:4326" ## REQUIRED
+			"wfs_srs"               "EPSG:4326" ## REQUIRED
+			"gml_include_items"     "all" ## Optional (serves all attributes for layer)
+	 		"wms_feature_info_mime_type" "text/xml"
+ #			"gml_featureid"         "INC_ID" ## REQUIRED
+		END
+#		CONNECTIONTYPE OGR
+#   	CONNECTION /Users/just/geodata/Amsterdam/brandweer/wgs84/brandweer.shp
+		DATA brandweer/brandweer
+		STATUS ON
+    	DUMP TRUE             ## REQUIRED  FOR WFS
+		TOLERANCE 10
+		TEMPLATE "template.html"
+		CLASS
+			COLOR 255 0 51
+			SYMBOL "circle"
+			SIZE 5
+		END
+	END
+
+
+	LAYER
+		NAME nlpubs
+		TYPE POINT
+#		EXTENT 3.313558 47.974766 5.070747 52.440378
+		EXTENT 4 50 6 54
+		METADATA
+			"ows_title"             "NL Pubs from OSM POIs" ##REQUIRED
+			"wfs_version" 			"1.1.0"
+			"wms_srs"               "EPSG:4326" ## REQUIRED
+			"wfs_srs"               "EPSG:4326" ## REQUIRED
+			"gml_include_items"     "all" ## Optional (serves all attributes for layer)
+	 		"wms_feature_info_mime_type" "text/xml"
+ #			"gml_featureid"         "INC_ID" ## REQUIRED
+		END
+#		CONNECTIONTYPE OGR
+#   	CONNECTION /Users/just/geodata/Amsterdam/brandweer/wgs84/brandweer.shp
+		DATA pubs/osm-nl-pub
+		STATUS ON
+    	DUMP TRUE             ## REQUIRED  FOR WFS
+		TOLERANCE 10
+		TEMPLATE "template.html"
+		CLASS
+			COLOR 0 102 204
+			SYMBOL "circle"
+			SIZE 10
+		END
+	END
+END
+

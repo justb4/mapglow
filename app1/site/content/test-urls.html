@@ -1,0 +1,66 @@
+<!--
+  ~ This file is part of MapGlow.
+  ~
+  ~ MapGlow is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MapGlow.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  ~ @author Just van den Broecke - OpenGeoGroep.nl 2011
+  -->
+<div class="hr-page-content">
+	<div class="hr-page-title">About MapGlow</div>
+	<div class="hr-page-text">
+
+		<h2>Test URLs - WMS</h2>
+		<a href="/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetCapabilities">GetCapabilities</a> <br/>
+
+		<a href="/wms?LAYERS=tracepoints&FORMAT=image/png&TRANSPARENT=true&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=application%2Fvnd.ogc.se_inimage&SRS=EPSG:900913&BBOX=467719.65379781,6895177.5317481,570336.36425228,6948492.3589673&WIDTH=400&HEIGHT=400">GetMap
+			Schoorl Normal</a></br>
+		<a href="/wms?STYLES=heat/seth/red-yellow/8/0.2&LAYERS=tracepoints&FORMAT=image/png&TRANSPARENT=true&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=application%2Fvnd.ogc.se_inimage&SRS=EPSG:900913&BBOX=467719.65379781,6895177.5317481,570336.36425228,6948492.3589673&WIDTH=400&HEIGHT=400">GetMap
+			Schoorl Heat STYLES=heat/seth/red-yellow/8/0.2</a><br>
+		<a href="/wms?styles=heat/seth/red-yellow-green/5/0.2&LAYERS=tracepoints&FORMAT=image/png&TRANSPARENT=true&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=application%2Fvnd.ogc.se_inimage&SRS=EPSG:900913&BBOX=467719.65379781,6895177.5317481,570336.36425228,6948492.3589673&WIDTH=400&HEIGHT=400">GetMap
+			Schoorl Heat (other style)</a><br>
+		<a href="/wms?styles=heat/seth/red-yellow-trans2/2/0.5&LAYERS=tracepoints&FORMAT=image/png&TRANSPARENT=true&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=application%2Fvnd.ogc.se_inimage&SRS=EPSG:900913&BBOX=467719.65379781,6895177.5317481,570336.36425228,6948492.3589673&WIDTH=400&HEIGHT=400">GetMap
+			Schoorl Heat (other style)</a><br>
+
+		<h2>Test URLs - WFS - Via MapScript</h2>
+		<a href="/wms?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetCapabilities">GetCapabilities</a> <br/>
+		<a href="/wms?TYPENAME=tracepoints&SERVICE=WFS&VERSION=1.1.0&REQUEST=DescribeFeatureType">DescribeFeatureType</a>
+		<br/>
+		<a href="/wms?TYPENAME=tracepoints&SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&SRSNAME=EPSG:4326&BBOX=4.69,52.70,4.71,52.68">GetFeature
+			Schoorl</a> <br/>
+
+		<h2>Test URLs - WFS - Direct Mapserver</h2>
+		<a href="/wms/mapserver.cgi?SERVICE=WFS&VERSION=1.1.0&REQUEST=GetCapabilities">GetCapabilities</a> <br/>
+		<a href="/wms/mapserver.cgi?TYPENAME=tracepoints&SERVICE=WFS&VERSION=1.1.0&REQUEST=DescribeFeatureType">DescribeFeatureType</a>
+		<br/>
+		<a href="/wms/mapserver.cgi?TYPENAME=tracepoints&SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&SRSNAME=EPSG:4326&BBOX=4.69,52.70,4.71,52.68">GetFeature
+			Schoorl</a> <br/>
+
+
+		<h2>Check GetLegendGraphic STYLEs</h2>
+
+		<p>Gradient is either predefined or can be specified in STYLE(S) param as ordered tuples of (Stop,R,G,B,A)
+			each as a float in range 0..1. "Stop" is where this color should stop within gradient. "A" is transparency
+			e.g. 0,0.8,0,0,1,0.5,1,1,1,1,0.9,1,1,1,1 (3 tuples: (0,0.8,0,0,1), (0.5,1,1,1,1) and (0.9,1,1,1,1))
+		</p>
+		<a href="/wms/?SERVICE=WMS&REQUEST=GetLegendGraphic&STYLE=heat/seth/red-yellow-green/5/0.4">/wms/?SERVICE=WMS&REQUEST=GetLegendGraphic&STYLE=heat/seth/red-yellow-green/5/0.4</a><br/>
+		<a href="/wms/?SERVICE=WMS&REQUEST=GetLegendGraphic&STYLE=heat/seth/red-yellow-trans2/5/0.4">/wms/?SERVICE=WMS&REQUEST=GetLegendGraphic&STYLE=heat/seth/red-yellow-trans2/5/0.4</a><br/>
+		<a href="/wms/?SERVICE=WMS&REQUEST=GetLegendGraphic&LAYER=brandweer&STYLE=heat/seth/0,0.8,0,0,1,0.5,1,1,1,1,0.9,1,1,1,1/5/0.4">/wms/?SERVICE=WMS&REQUEST=GetLegendGraphic&LAYER=brandweer&STYLE=heat/seth/0,0.8,0,0,1,0.5,1,1,1,1,0.9,1,1,1,1/5/0.4</a><br/>
+		<a href="/wms/?SERVICE=WMS&REQUEST=GetLegendGraphic&LAYER=brandweer&STYLE=heat/seth/0,0,0,1,1,0.5,0,1,0,1,0.9,1,1,1,1/5/0.4">/wms/?SERVICE=WMS&REQUEST=GetLegendGraphic&LAYER=brandweer&STYLE=heat/seth/0,0,0,1,1,0.5,0,1,0,1,0.9,1,1,1,1/5/0.4</a><br/>
+		<a href="/wms/?SERVICE=WMS&REQUEST=GetLegendGraphic&LAYER=brandweer&STYLE=heat/seth/0,0,1,1,1,0.5,0,1,0,1,0.9,1,1,1,1/5/0.4">/wms/?SERVICE=WMS&REQUEST=GetLegendGraphic&LAYER=brandweer&STYLE=heat/seth/0,0,1,1,1,0.5,0,1,0,1,0.9,1,1,1,1/5/0.4</a><br/>
+
+		<h2>Check GetFeatureInfo</h2>
+		<a href="/wms/?&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetFeatureInfo&LAYERS=brandweer&QUERY_LAYERS=brandweer&STYLES=heat%2Fseth%2Fred-yellow-trans2%2F5%2F0.95&BBOX=311854.998524%2C6748447.101354%2C769865.671926%2C6965834.009758&FEATURE_COUNT=10&HEIGHT=711&WIDTH=1498&FORMAT=image%2Fpng&INFO_FORMAT=application%2Fvnd.ogc.gml&SRS=EPSG%3A900913&X=747&Y=330">Brandweer
+			feature info (GML)</a><br/>
+	</div>
+</div>

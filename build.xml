@@ -1,0 +1,28 @@
+<!--
+
+ANT Build file for app1.
+
+$Id: build.xml 99 2009-08-20 12:11:38Z just $
+-->
+<project name="mapglow" default="backup" basedir=".">
+
+	<!-- Initialization of properties (dirs, files) -->
+	<property file="build.properties"/>
+
+	<!-- Directory locations -->
+	<property name="home.dir" value="${basedir}"/>
+
+	<target name="backup">
+		<exec executable="rsync">
+			<arg line="-alzvx --delete --exclude .svn/"/>
+			<arg line="${home.dir}/"/>
+			<arg line="${backup.local.dir}/"/>
+		</exec>
+        <exec executable="rsync">
+            <arg line="-alzvx --delete --exclude .svn/"/>
+            <arg line="${home.dir}/"/>
+            <arg line="${backup.ogg.local.dir}/"/>
+        </exec>
+	</target>
+
+</project>

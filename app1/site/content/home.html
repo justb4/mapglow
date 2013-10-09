@@ -1,0 +1,72 @@
+<!--
+  ~ This file is part of MapGlow.
+  ~
+  ~ MapGlow is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MapGlow.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  ~ @author Just van den Broecke - OpenGeoGroep.nl 2011
+  -->
+
+<div class="hr-page-content">
+	<div class="hr-page-title">About MapGlow</div>
+	<div class="hr-page-text">
+		<p>
+			MapGlow enables displaying your geodata as <a href="http://en.wikipedia.org/wiki/Heat_map">heatmaps</a>.
+			What sets MapGlow apart from other heatmap tools:
+		<ul>
+			<li>
+				works with common vector data sources like PostGIS and ESRI Shapefiles
+			</li>
+			<li>
+				integrates with standard tools like <a href="http://mapserver.org">UMN MapServer</a>
+			</li>
+			<li>
+				serves heatmaps via the standardized <a href="http://en.wikipedia.org/wiki/Web_Map_Service">Web Map
+				Service (WMS)</a>
+			</li>
+			<li>
+				allows for client-driven heatmap styling
+			</li>
+		</ul>
+		<p>
+			MapGlow can thus be utilized within most GIS mapping applications.
+			In addition, MapGlow's algorithmic extensibility allows for fine-grained tailoring for specific
+			heatmap contexts.
+		</p>
+		<table border="0" cellspacing="4" cellpadding="0">
+			<tr>
+				<td><img src="/site/media/screenshot-fire1.png" alt="Firebrigade Amsterdam actions 2006-2010"/></td>
+				<td><img src="/site/media/screenshot-traces-ams1.png" alt="Traces from Geotracing.com in Amsterdam"/></td>
+			</tr>
+		</table>
+		<h2>How MapGlow works</h2>
+
+		<p>
+			MapGlow is basically a <a href="http://mapserver.org">UMN MapServer</a>
+			interceptor written in <a href="http://mapserver.org/mapscript">Python
+			MapScript</a>.
+			Heatmap generation is triggered by values of the STYLE
+			parameter within WMS GetMap requests. When a heatmap is requested, MapGlow
+			will query features (points) from the related <a href="http://mapserver.org/mapfile/layer.html">MapServer Layer</a>
+			and draw a heatmap using the client-supplied parameters like gradients and algorithm-specific values.
+		</p>
+
+		<p>
+			And last but not least: MapGlow is Free and Open Source under the <a href="http://www.gnu.org/licenses/gpl.html">GPL v3 license</a>.
+		</p>
+
+		<p>
+			<img src="/site/media/mapglow-light-up1.png" alt="Logo Light Up"/>
+		</p>
+	</div>
+</div>

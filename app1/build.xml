@@ -1,0 +1,54 @@
+<!--
+  ~ This file is part of MapGlow.
+  ~
+  ~ MapGlow is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with MapGlow.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  ~ @author Just van den Broecke - OpenGeoGroep.nl 2011
+  -->
+
+<!--
+
+ANT Build file for app1.
+
+$Id: build.xml 99 2009-08-20 12:11:38Z just $
+-->
+<project name="mapglow-app1" default="sync-site-local" basedir=".">
+
+	<!-- Initialization of properties (dirs, files) -->
+	<property file="../build.properties"/>
+
+	<!-- Directory locations -->
+	<property name="home.dir" value="${basedir}"/>
+
+	<target name="sync-site-local">
+		<exec executable="chmod">
+			<arg line="+x"/>
+			<arg line="${home.dir}/wms/index.py ${home.dir}/wms/mapserver.cgi"/>
+		</exec>
+		<exec executable="rsync">
+			<arg line="-alzvx  --delete --exclude .svn/"/>
+			<arg line="${home.dir}/"/>
+			<arg line="${deploy.local.dir}/site/"/>
+		</exec>
+	</target>
+
+	<target name="sync-site-prod">
+		<exec executable="rsync">
+			<arg line="-e ssh -alzvx --delete --exclude .svn/"/>
+			<arg line="${home.dir}/"/>
+			<arg line="${deploy.prod.dir}/site/"/>
+		</exec>
+	</target>
+
+</project>
