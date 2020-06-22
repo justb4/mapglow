@@ -554,7 +554,7 @@ class ImageMaker:
 
     def SavePNG(self, filename):
         printtime('saving image')
-        self.image.save(filename)
+        self.image.save(filename, interlace=0)
 
     def StreamPNG(self):
         # Send image to a web browser
@@ -568,7 +568,7 @@ class ImageMaker:
         sys.stdout.write('Content-Type: image/png\r\n\r\n')
 
         # Send the image to the client
-        self.image.save(sys.stdout, 'PNG')
+        self.image.save(sys.stdout, 'PNG', interlace=0)
 
 class ImageSeriesMaker:
     def __init__(self, colormap, background, background_image, filename_template, num_frames, total_points, width,

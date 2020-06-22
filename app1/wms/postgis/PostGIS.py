@@ -32,7 +32,7 @@ class PostGIS:
                         'ilike': 'ilike', 'like':'like',
                         'gte': '>=', 'lte': '<='}
 
-    def __init__(self, name, srid = 4326, fid = "gid", geometry = "the_geom", order = "", attribute_cols = '*', writable = True, encoding = "utf-8", **args):
+    def __init__(self, name, schema = 'public', srid = 4326, fid = "gid", geometry = "the_geom", order = "", attribute_cols = '*', writable = True, encoding = "utf-8", **args):
         # DataSource.__init__(self, name, **args)
         self.table          = args["layer"]
         self.fid_col        = fid
@@ -40,6 +40,7 @@ class PostGIS:
         self.geom_col       = geometry
         self.order          = order
         self.srid           = srid
+        self.schema         = schema
         self.db             = None
         self.dsn            = args["dsn"]
         self.writable       = writable
@@ -47,6 +48,14 @@ class PostGIS:
 
     def begin (self):
         self.db = psycopg.connect(self.dsn)
+
+        # Non-public schema set search path
+        if self.schema != 'public':
+            # Always set search path to our schema
+            sql = 'SET search_path TO %s,public' % self.schema
+            cursor = self.db.cursor()
+            cursor.execute(sql)
+            # self.connection.close()
 
     def commit (self):
         if self.writable:
@@ -209,7 +218,7 @@ class PostGIS:
 if __name__ == '__main__':
     name='georambling'
     dsn="host=localhost dbname='georambling' user='oaseuser' password='oase'"
-    layer='gw_tracepoint'
+    layer='app.gw_tracepoint'
     fid='id' #defaults to ogc_fid
     geometry='point' # defaults to the_geom
     srid=4326 #defaults to 4326

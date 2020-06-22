@@ -279,12 +279,13 @@ class MapGlowMS:
         fid = layer.getMetaData('gml_featureid') #defaults to ogc_fid
         geometry= layer.getMetaData('mapglow_table_geom_col') # defaults to the_geom
         srid=4326 #defaults to 4326
+        schema = layer.getMetaData('mapglow_schema_name')
         encoding='utf-8' #defaults to utf-8
         attribute_cols='rating' #optional
         order='random()' #optional
 
         #    try:
-        pg = PostGIS(name=name, fid=fid, geometry=geometry, srid=srid, order=order, layer=table, dsn=dsn)
+        pg = PostGIS(name=name, fid=fid, geometry=geometry, srid=srid, order=order, schema=schema, layer=table, dsn=dsn)
         pg.begin()
 
         class Action:
@@ -329,7 +330,7 @@ class MapGlowMS:
         box_polygon = str(bbox_arr[0]) + ' ' + str(bbox_arr[1]) + ',' + str(bbox_arr[0]) + ' ' + str(bbox_arr[3]) + ',' + str(bbox_arr[2]) + ' ' + str(bbox_arr[3]) + ','  + str(bbox_arr[2]) + ' ' + str(bbox_arr[1]) + ',' + str(bbox_arr[0]) + ' ' + str(bbox_arr[1])
         # box_polygon = "-4.275557 50.242394, -4.275557 54.685361, 14.115557 54.685361, 14.115557 50.242394, -4.275557 50.242394"
         sql = "select AsBinary(point) as wkb_geometry from gw_tracepoint where point && GeomFromText('POLYGON((" + box_polygon + "))',4326) order by random() limit " + str(max_features)
-        connProp = "PG: host=localhost dbname='georambling' user='oaseuser' password='oase'"
+        connProp = "PG: host=localhost dbname='georambling' user='oaseuser' password='oase' active_schema='app'"
         conn = ogr.Open(connProp)
         result = conn.ExecuteSQL(sql)
 
