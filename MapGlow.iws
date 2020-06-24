@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bc74d345-b73f-4fc7-a827-36d088957bae" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/MapGlow.iws" beforeDir="false" afterPath="$PROJECT_DIR$/MapGlow.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
