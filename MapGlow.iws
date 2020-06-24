@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bc74d345-b73f-4fc7-a827-36d088957bae" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/MapGlow.iws" beforeDir="false" afterPath="$PROJECT_DIR$/MapGlow.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app1/config/mapserver/app1.map" beforeDir="false" afterPath="$PROJECT_DIR$/app1/config/mapserver/app1.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app1/wms/heatmap_seth.py" beforeDir="false" afterPath="$PROJECT_DIR$/app1/wms/heatmap_seth.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app1/wms/mapglow_ms.py" beforeDir="false" afterPath="$PROJECT_DIR$/app1/wms/mapglow_ms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app1/wms/postgis/PostGIS.py" beforeDir="false" afterPath="$PROJECT_DIR$/app1/wms/postgis/PostGIS.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
