@@ -1,5 +1,6 @@
 # MapGlow
-MapGlow enables displaying your geodata as heatmaps. See demo and docs at http://mapglow.opentraces.org/ .
+MapGlow enables displaying your geodata as heatmaps using standard WMS requests. 
+See demo and docs at http://mapglow.opentraces.org/ .
 
 MapGlow is a Python MapScript addition to UMN MapServer. 
 
