@@ -25,7 +25,7 @@ OpenLayers.ProxyHost = "/cgi-bin/proxy.cgi?url=";
 
 /** Use Google projection/resolutions options. */
 Heron.Map.options = {
-    PROJECTION: 'EPSG:900913',
+    PROJECTION: 'EPSG:3857',
     UNITS: 'm',
     RESOLUTIONS: [156543.0339, 78271.51695, 39135.758475, 19567.8792375, 9783.93961875,
         4891.969809375, 2445.9849046875, 1222.99245234375, 611.496226171875,
@@ -39,14 +39,15 @@ Heron.Map.options = {
 
     CENTER: new OpenLayers.LonLat(4.92, 52.52).transform(
             new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-            new OpenLayers.Projection("EPSG:900913") // to Spherical Mercator Projection
+            new OpenLayers.Projection("EPSG:3857") // to Spherical Mercator Projection
             ),
     XY_PRECISION: 0,
     ZOOM: 9
 };
 
 Heron.Map.urls = {
-    LOCAL_WMS :  '/wms/?'
+    // LOCAL_WMS :  '/wms/?'
+    LOCAL_WMS: 'http://localhost:8081/?'
 };
 
 /** Define OL layers. */

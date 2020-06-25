@@ -1,0 +1,41 @@
+version: "3"
+
+# Example docker-compose file, adapt for your setup
+# docker run -e MS_MAPFILE=/srv/data/example.map --rm -d -p 80:80 --name mapserver-example -v `pwd`/example:/srv/data pdok/mapserver
+# docker run -e DEBUG=0 -e MIN_PROCS=1 -e MAX_PROCS=3 -e MAX_LOAD_PER_PROC=4 -e IDLE_TIMEOUT=20 -e MS_MAPFILE=/srv/data/example.map --rm -d -p 80:80 --name mapserver-run-example -v `pwd`/example:/srv/data pdok/mapserver
+services:
+
+  mapserver:
+
+    image: justb4/mapglow:latest
+
+    container_name: mapglow
+
+    # restart: unless-stopped
+    environment:
+      - MS_MAPFILE=/app1/config/mapserver/app1.map
+
+    labels:
+      # v2 config
+      - "traefik.enable=true"
+      - "traefik.docker.network=map5sup-network"
+      - "traefik.http.middlewares.ms-stripprefix.stripprefix.prefixes=/ms"
+      - "traefik.http.middlewares.ms-redirect-https.redirectscheme.scheme=https"
+      - "traefik.http.routers.mapserver_http.rule=Host(`sup.map5.nl`) && PathPrefix(`/ms`)"
+      - "traefik.http.routers.mapserver_http.entrypoints=http"
+      - "traefik.http.routers.mapserver_http.middlewares=ms-redirect-https@docker"
+      - "traefik.http.routers.mapserver_https.rule=Host(`sup.map5.nl`) && PathPrefix(`/ms`)"
+      - "traefik.http.routers.mapserver_https.entrypoints=https"
+      - "traefik.http.routers.mapserver_https.middlewares=ms-stripprefix@docker"
+      - "traefik.http.routers.mapserver_https.tls.certresolver=default"
+
+    ports:
+      - "8081:80"
+
+    volumes:
+      - ./app1:/app1:rw
+
+#networks:
+#    default:
+#        external:
+#            name: map5sup-network

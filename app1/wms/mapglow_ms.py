@@ -77,7 +77,7 @@ class MapGlowMS:
             if content_type == 'vnd.ogc.se_xml' or content_type == 'application/vnd.ogc.wms_xml' or content_type == 'application/vnd.ogc.gml':
                 content_type = 'text/xml'
 
-            print('Content-type: ' + content_type)
+            print('Content-type: ' + str(content_type))
             print
 
         print(content)
@@ -101,7 +101,7 @@ class MapGlowMS:
 
         # CREATE PROJECTION OBJECTS
         google = osr.SpatialReference ()
-        google.ImportFromEPSG(900913)
+        google.ImportFromEPSG(3857)
         wgs84 = osr.SpatialReference()
         wgs84.ImportFromEPSG(4326)
 
@@ -462,4 +462,4 @@ class WFSParser:
 # heat()
 
 # test url schoorl
-# http://local.mapglow.org/wms/?LAYERS=tracepoints&FORMAT=image%2Fpng&TRANSPARENT=true&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&STYLES=&EXCEPTIONS=application%2Fvnd.ogc.se_inimage&SRS=EPSG%3A900913&BBOX=467719.65379781,6895177.5317481,570336.36425228,6948492.3589673&WIDTH=1342&HEIGHT=697
+# http://local.mapglow.org/wms/?LAYERS=tracepoints&FORMAT=image%2Fpng&TRANSPARENT=true&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&STYLES=&EXCEPTIONS=application%2Fvnd.ogc.se_inimage&SRS=EPSG%3A3857&BBOX=467719.65379781,6895177.5317481,570336.36425228,6948492.3589673&WIDTH=1342&HEIGHT=697

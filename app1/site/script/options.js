@@ -36,7 +36,8 @@ MapGlow.options.locations = {
 };
 
 MapGlow.options.urls = {
-	LOCAL_WMS :  '/wms/?',
+	// LOCAL_WMS :  '/wms/?',
+	LOCAL_WMS :  'http://localhost:8081?',
 	GS2_INSPIRE_WMS :  'http://kademo.nl/gs2/inspire/wms?',
 	GS2_KADASTER_WMS :  'http://gis.kademo.nl/gs2/wms?',
 	TILECACHE :  'http://gis.kademo.nl/cgi-bin/tilecache.cgi?',
@@ -49,7 +50,7 @@ MapGlow.options.map = {
 	settings : {
 
 		allOverlays : true,
-		projection: 'EPSG:900913',
+		projection: 'EPSG:3857',
 		units: 'm',
 		resolutions: [156543.0339, 78271.51695, 39135.758475, 19567.8792375, 9783.93961875,
 			4891.969809375, 2445.9849046875, 1222.99245234375, 611.496226171875,

@@ -2,7 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bc74d345-b73f-4fc7-a827-36d088957bae" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app1/wms/wsgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MapGlow.iws" beforeDir="false" afterPath="$PROJECT_DIR$/MapGlow.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app1/config/mapserver/app1.map" beforeDir="false" afterPath="$PROJECT_DIR$/app1/config/mapserver/app1.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app1/site/content/test-urls.html" beforeDir="false" afterPath="$PROJECT_DIR$/app1/site/content/test-urls.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app1/site/script/Config.js" beforeDir="false" afterPath="$PROJECT_DIR$/app1/site/script/Config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app1/site/script/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/app1/site/script/layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app1/site/script/options.js" beforeDir="false" afterPath="$PROJECT_DIR$/app1/site/script/options.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app1/test/ol-traces.html" beforeDir="false" afterPath="$PROJECT_DIR$/app1/test/ol-traces.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app1/wms/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/app1/wms/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app1/wms/mapglow_ms.py" beforeDir="false" afterPath="$PROJECT_DIR$/app1/wms/mapglow_ms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mapglow.iml" beforeDir="false" afterPath="$PROJECT_DIR$/mapglow.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,23 +132,27 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
-    <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="preferences.sourceCode.JavaScript / ECMAScript / ActionScript" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="options.lastSelected" value="preferences.sourceCode.JavaScript / ECMAScript / ActionScript" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/MapGlow.ipr" />
-    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="recentsLimit" value="5" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/app1/data" />
       <recent name="$PROJECT_DIR$/app1/config" />
     </key>
@@ -427,30 +442,14 @@
     <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="true" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
-  <component name="masterDetails">
-    <states>
-      <state key="Copyright.UI">
-        <settings>
-          <last-edited>GPL_v3</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions />
-        </settings>
-      </state>
-      <state key="ScopeChooserConfigurable.UI">
-        <settings>
-          <splitter-proportions />
-        </settings>
-      </state>
-    </states>
+  <component name="WindowStateProjectService">
+    <state x="703" y="193" key="#Project_Structure" timestamp="1593084672246">
+      <screen x="0" y="23" width="1920" height="1008" />
+    </state>
+    <state x="703" y="193" key="#Project_Structure/0.23.1920.1008@0.23.1920.1008" timestamp="1593084672246" />
+    <state x="783" y="295" width="824" height="528" key="find.popup" timestamp="1593091787766">
+      <screen x="0" y="23" width="1920" height="1008" />
+    </state>
+    <state x="783" y="295" width="824" height="528" key="find.popup/0.23.1920.1008@0.23.1920.1008" timestamp="1593091787766" />
   </component>
 </project>

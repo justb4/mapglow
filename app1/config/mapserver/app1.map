@@ -30,16 +30,18 @@ MAP
 
   WEB
       METADATA
+        "ows_enable_request"   "*"
 		"ows_title"                  "WMS/WFS Server for MapGlow Demos" ## REQUIRED
 #		"ows_extent" 				 "3 50 6 54"
-		"wms_srs" 					 "epsg:4326 epsg:900913"
-		"wfs_srs"                    "EPSG:4326" ## Recommended
+		"wms_srs" 					 "epsg:4326 epsg:3857 epsg:900913"
+		"wfs_srs"                    "epsg:4326" ## Recommended
 #		"wfs_maxfeatures"			  "5000"
 		"ows_onlineresource"         "http://mapglow.org/wms?" ## Recommended
 		"ows_service_onlineresource"  "http://mapglow.org/wms?" ## Recommended
 		"ows_abstract"               "This service demonstrates dynamic heatmap generation using standard WMS " ## Recommended
       END
   END
+
 
   # Start of LAYER DEFINITIONS ------------
   LAYER # States polygon layer begins here
@@ -50,8 +52,8 @@ MAP
     METADATA
      "ows_title"             "Georambling Tracepoints" ##REQUIRED
 	 "wfs_version" 			 "1.1.0"
-     "wms_srs"               "EPSG:4326" ## REQUIRED
-     "wfs_srs"               "EPSG:4326" ## REQUIRED
+     "wms_srs" 					 "epsg:4326 epsg:3857 epsg:900913"
+     "wfs_srs" 					 "epsg:4326 epsg:3857 epsg:900913"
 	 "wms_feature_info_mime_type" "text/xml"
      "gml_include_items"     "all" ## Optional (serves all attributes for layer)
      "gml_featureid"         "id" ## REQUIRED
@@ -89,7 +91,6 @@ MAP
  	END
   END # layer ends here
 
-
 	LAYER
 		NAME brandweer
 		TYPE POINT
@@ -98,8 +99,8 @@ MAP
 		METADATA
 			"ows_title"             "Brandweer Amsterdam 2006-2010" ##REQUIRED
 			"wfs_version" 			"1.1.0"
-			"wms_srs"               "EPSG:4326" ## REQUIRED
-			"wfs_srs"               "EPSG:4326" ## REQUIRED
+            "wms_srs" 				"epsg:4326 epsg:3857 epsg:900913"
+            "wfs_srs" 				"epsg:4326 epsg:3857 epsg:900913"
 			"gml_include_items"     "all" ## Optional (serves all attributes for layer)
 	 		"wms_feature_info_mime_type" "text/xml"
  #			"gml_featureid"         "INC_ID" ## REQUIRED
@@ -127,8 +128,8 @@ MAP
 		METADATA
 			"ows_title"             "NL Pubs from OSM POIs" ##REQUIRED
 			"wfs_version" 			"1.1.0"
-			"wms_srs"               "EPSG:4326" ## REQUIRED
-			"wfs_srs"               "EPSG:4326" ## REQUIRED
+            "wms_srs" 				"epsg:4326 epsg:3857 epsg:900913"
+            "wfs_srs" 				"epsg:4326 epsg:3857 epsg:900913"
 			"gml_include_items"     "all" ## Optional (serves all attributes for layer)
 	 		"wms_feature_info_mime_type" "text/xml"
  #			"gml_featureid"         "INC_ID" ## REQUIRED

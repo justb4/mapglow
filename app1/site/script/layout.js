@@ -138,29 +138,8 @@ Heron.layout = {
 							border: false,
 							items: [
 								{
-									xtype: 'hr_activelayerspanel',
-									height: 240,
-									flex: 3,
-									hropts: {
-										/** Defines the custom component added under the standard layer node. */
-										component : {
-											xtype: "gx_opacityslider",
-											showTitle: false,
-											plugins: new GeoExt.LayerOpacitySliderTip(),
-											width: 160,
-											value: 100,
-											inverse: false,
-											aggressive: false,
-											style: {
-												marginLeft: '18px'
-											}
-										}
-
-									}
-								},
-								{
 									xtype: 'panel',
-									flex: 5,
+									flex: 3,
 									layout: 'accordion',
 									items: [
 										{
@@ -180,7 +159,29 @@ Heron.layout = {
 											xtype: 'hr_layerlegendpanel'
 										}
 									]
+								},
+								{
+									xtype: 'hr_activelayerspanel',
+									height: 240,
+									flex: 5,
+									hropts: {
+										/** Defines the custom component added under the standard layer node. */
+										component : {
+											xtype: "gx_opacityslider",
+											showTitle: false,
+											plugins: new GeoExt.LayerOpacitySliderTip(),
+											width: 160,
+											value: 100,
+											inverse: false,
+											aggressive: false,
+											style: {
+												marginLeft: '18px'
+											}
+										}
+
+									}
 								}
+
 							]
 						},
 						{

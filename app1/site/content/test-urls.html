@@ -23,13 +23,13 @@
 		<h2>Test URLs - WMS</h2>
 		<a href="/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetCapabilities">GetCapabilities</a> <br/>
 
-		<a href="/wms?LAYERS=tracepoints&FORMAT=image/png&TRANSPARENT=true&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=application%2Fvnd.ogc.se_inimage&SRS=EPSG:900913&BBOX=467719.65379781,6895177.5317481,570336.36425228,6948492.3589673&WIDTH=400&HEIGHT=400">GetMap
+		<a href="/wms?LAYERS=tracepoints&FORMAT=image/png&TRANSPARENT=true&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=application%2Fvnd.ogc.se_inimage&SRS=EPSG:3857&BBOX=467719.65379781,6895177.5317481,570336.36425228,6948492.3589673&WIDTH=400&HEIGHT=400">GetMap
 			Schoorl Normal</a></br>
-		<a href="/wms?STYLES=heat/seth/red-yellow/8/0.2&LAYERS=tracepoints&FORMAT=image/png&TRANSPARENT=true&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=application%2Fvnd.ogc.se_inimage&SRS=EPSG:900913&BBOX=467719.65379781,6895177.5317481,570336.36425228,6948492.3589673&WIDTH=400&HEIGHT=400">GetMap
+		<a href="/wms?STYLES=heat/seth/red-yellow/8/0.2&LAYERS=tracepoints&FORMAT=image/png&TRANSPARENT=true&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=application%2Fvnd.ogc.se_inimage&SRS=EPSG:3857&BBOX=467719.65379781,6895177.5317481,570336.36425228,6948492.3589673&WIDTH=400&HEIGHT=400">GetMap
 			Schoorl Heat STYLES=heat/seth/red-yellow/8/0.2</a><br>
-		<a href="/wms?styles=heat/seth/red-yellow-green/5/0.2&LAYERS=tracepoints&FORMAT=image/png&TRANSPARENT=true&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=application%2Fvnd.ogc.se_inimage&SRS=EPSG:900913&BBOX=467719.65379781,6895177.5317481,570336.36425228,6948492.3589673&WIDTH=400&HEIGHT=400">GetMap
+		<a href="/wms?styles=heat/seth/red-yellow-green/5/0.2&LAYERS=tracepoints&FORMAT=image/png&TRANSPARENT=true&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=application%2Fvnd.ogc.se_inimage&SRS=EPSG:3857&BBOX=467719.65379781,6895177.5317481,570336.36425228,6948492.3589673&WIDTH=400&HEIGHT=400">GetMap
 			Schoorl Heat (other style)</a><br>
-		<a href="/wms?styles=heat/seth/red-yellow-trans2/2/0.5&LAYERS=tracepoints&FORMAT=image/png&TRANSPARENT=true&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=application%2Fvnd.ogc.se_inimage&SRS=EPSG:900913&BBOX=467719.65379781,6895177.5317481,570336.36425228,6948492.3589673&WIDTH=400&HEIGHT=400">GetMap
+		<a href="/wms?styles=heat/seth/red-yellow-trans2/2/0.5&LAYERS=tracepoints&FORMAT=image/png&TRANSPARENT=true&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&EXCEPTIONS=application%2Fvnd.ogc.se_inimage&SRS=EPSG:3857&BBOX=467719.65379781,6895177.5317481,570336.36425228,6948492.3589673&WIDTH=400&HEIGHT=400">GetMap
 			Schoorl Heat (other style)</a><br>
 
 		<h2>Test URLs - WFS - Via MapScript</h2>
@@ -60,7 +60,7 @@
 		<a href="/wms/?SERVICE=WMS&REQUEST=GetLegendGraphic&LAYER=brandweer&STYLE=heat/seth/0,0,1,1,1,0.5,0,1,0,1,0.9,1,1,1,1/5/0.4">/wms/?SERVICE=WMS&REQUEST=GetLegendGraphic&LAYER=brandweer&STYLE=heat/seth/0,0,1,1,1,0.5,0,1,0,1,0.9,1,1,1,1/5/0.4</a><br/>
 
 		<h2>Check GetFeatureInfo</h2>
-		<a href="/wms/?&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetFeatureInfo&LAYERS=brandweer&QUERY_LAYERS=brandweer&STYLES=heat%2Fseth%2Fred-yellow-trans2%2F5%2F0.95&BBOX=311854.998524%2C6748447.101354%2C769865.671926%2C6965834.009758&FEATURE_COUNT=10&HEIGHT=711&WIDTH=1498&FORMAT=image%2Fpng&INFO_FORMAT=application%2Fvnd.ogc.gml&SRS=EPSG%3A900913&X=747&Y=330">Brandweer
+		<a href="/wms/?&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetFeatureInfo&LAYERS=brandweer&QUERY_LAYERS=brandweer&STYLES=heat%2Fseth%2Fred-yellow-trans2%2F5%2F0.95&BBOX=311854.998524%2C6748447.101354%2C769865.671926%2C6965834.009758&FEATURE_COUNT=10&HEIGHT=711&WIDTH=1498&FORMAT=image%2Fpng&INFO_FORMAT=application%2Fvnd.ogc.gml&SRS=EPSG%3A3857&X=747&Y=330">Brandweer
 			feature info (GML)</a><br/>
 	</div>
 </div>
