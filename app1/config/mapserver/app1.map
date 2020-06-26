@@ -93,8 +93,11 @@ MAP
 
 	LAYER
 		NAME brandweer
+		STATUS ON
 		TYPE POINT
-#		EXTENT 3.313558 47.974766 5.070747 52.440378
+        PROJECTION
+          "init=epsg:4326"
+        END
 		EXTENT 4 50 6 54
 		METADATA
 			"ows_title"             "Brandweer Amsterdam 2006-2010" ##REQUIRED
@@ -103,12 +106,12 @@ MAP
             "wfs_srs" 				"epsg:4326 epsg:3857 epsg:900913"
 			"gml_include_items"     "all" ## Optional (serves all attributes for layer)
 	 		"wms_feature_info_mime_type" "text/xml"
+            "mapglow_feat_density"	 "0.002" # density of features per pixel (max features per query = width * height * density)
  #			"gml_featureid"         "INC_ID" ## REQUIRED
 		END
-#		CONNECTIONTYPE OGR
-#   	CONNECTION /Users/just/geodata/Amsterdam/brandweer/wgs84/brandweer.shp
-		DATA brandweer/brandweer
-		STATUS ON
+		# CONNECTIONTYPE OGR
+   	    # CONNECTION "brandweer/brandweer.shp"
+		DATA brandweer/brandweer.shp
     	DUMP TRUE             ## REQUIRED  FOR WFS
 		TOLERANCE 10
 		TEMPLATE "template.html"
@@ -119,33 +122,47 @@ MAP
 		END
 	END
 
-
 	LAYER
 		NAME nlpubs
-		TYPE POINT
-#		EXTENT 3.313558 47.974766 5.070747 52.440378
-		EXTENT 4 50 6 54
-		METADATA
-			"ows_title"             "NL Pubs from OSM POIs" ##REQUIRED
-			"wfs_version" 			"1.1.0"
-            "wms_srs" 				"epsg:4326 epsg:3857 epsg:900913"
-            "wfs_srs" 				"epsg:4326 epsg:3857 epsg:900913"
-			"gml_include_items"     "all" ## Optional (serves all attributes for layer)
-	 		"wms_feature_info_mime_type" "text/xml"
- #			"gml_featureid"         "INC_ID" ## REQUIRED
-		END
-#		CONNECTIONTYPE OGR
-#   	CONNECTION /Users/just/geodata/Amsterdam/brandweer/wgs84/brandweer.shp
-		DATA pubs/osm-nl-pub
 		STATUS ON
-    	DUMP TRUE             ## REQUIRED  FOR WFS
-		TOLERANCE 10
-		TEMPLATE "template.html"
-		CLASS
+		TYPE POINT
+        PROJECTION
+          "init=epsg:4326"
+        END
+
+		METADATA
+        "wfs_title"             "NL Pubs from OSM POIs"
+        "wfs_version" 			"1.1.0"
+        "wfs_extent" 			"4 50 6 54"
+        "wfs_bbox_extended"     "true"
+        "wfs_enable_request"     "*"
+        "wfs_srs" 				"epsg:4326 epsg:3857 epsg:900913"
+        "wfs_include_items"       "all"
+        "gml_include_items"       "all"
+        "gml_geometries"          "geom"
+        "wms_title"             "NL Pubs from OSM POIs"
+        "wms_srs" 				"epsg:4326 epsg:3857 epsg:900913"
+        "wms_extent" 			"4 50 6 54"
+        "wms_feature_info_mime_type" "text/xml"
+        "mapglow_feat_density"	 "0.002"
+        #"gml_featureid"         "INC_ID"
+		END
+
+        CONNECTIONTYPE OGR
+        CONNECTION "pubs/osm-nl-pub.json"
+
+        DUMP TRUE
+		TEMPLATE "/app1/config/mapserver/template.html"
+
+        CLASS
+          NAME "osm-nl-pub"
+          STYLE
 			COLOR 0 102 204
 			SYMBOL "circle"
 			SIZE 10
-		END
+          END
+        END
+
 	END
 END
 

@@ -2,18 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bc74d345-b73f-4fc7-a827-36d088957bae" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app1/wms/wsgi.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MapGlow.iws" beforeDir="false" afterPath="$PROJECT_DIR$/MapGlow.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app1/config/mapserver/app1.map" beforeDir="false" afterPath="$PROJECT_DIR$/app1/config/mapserver/app1.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app1/site/content/test-urls.html" beforeDir="false" afterPath="$PROJECT_DIR$/app1/site/content/test-urls.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app1/site/script/Config.js" beforeDir="false" afterPath="$PROJECT_DIR$/app1/site/script/Config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app1/site/script/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/app1/site/script/layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app1/site/script/options.js" beforeDir="false" afterPath="$PROJECT_DIR$/app1/site/script/options.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app1/test/ol-traces.html" beforeDir="false" afterPath="$PROJECT_DIR$/app1/test/ol-traces.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app1/wms/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/app1/wms/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app1/wms/heatmap_seth.py" beforeDir="false" afterPath="$PROJECT_DIR$/app1/wms/heatmap_seth.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app1/wms/mapglow_ms.py" beforeDir="false" afterPath="$PROJECT_DIR$/app1/wms/mapglow_ms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapglow.iml" beforeDir="false" afterPath="$PROJECT_DIR$/mapglow.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app1/wms/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/app1/wms/wsgi.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -447,9 +440,10 @@
       <screen x="0" y="23" width="1920" height="1008" />
     </state>
     <state x="703" y="193" key="#Project_Structure/0.23.1920.1008@0.23.1920.1008" timestamp="1593084672246" />
-    <state x="783" y="295" width="824" height="528" key="find.popup" timestamp="1593091787766">
-      <screen x="0" y="23" width="1920" height="1008" />
+    <state x="783" y="295" width="824" height="528" key="find.popup" timestamp="1593170550684">
+      <screen x="0" y="23" width="1920" height="1007" />
     </state>
+    <state x="783" y="295" width="824" height="528" key="find.popup/0.23.1920.1007@0.23.1920.1007" timestamp="1593170550684" />
     <state x="783" y="295" width="824" height="528" key="find.popup/0.23.1920.1008@0.23.1920.1008" timestamp="1593091787766" />
   </component>
 </project>

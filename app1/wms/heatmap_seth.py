@@ -28,6 +28,7 @@
 # - extra option to create gradient from detailed srgba spec (see gradient.py)
 
 import sys
+import io
 from math import log, tan, sqrt
 from time import mktime, strptime
 from xml import sax
@@ -570,6 +571,20 @@ class ImageMaker:
         # Send the image to the client
         self.image.save(sys.stdout, 'PNG', interlace=0)
 
+    def ReturnPNG(self):
+        # Send image to a web browser
+        # print("Content-type: image/png" + "\n\n")
+        # self.image.write()
+        # f = cStringIO.StringIO()
+        # self.image.save(f, "PNG")
+
+        # f.seek(0)
+        # print(f.read())
+        # sys.stdout.write('Content-Type: image/png\r\n\r\n')
+        img_byte_arr = io.BytesIO()
+        self.image.save(img_byte_arr, format='PNG')
+        return img_byte_arr.getvalue()
+
 class ImageSeriesMaker:
     def __init__(self, colormap, background, background_image, filename_template, num_frames, total_points, width,
                  height, bounding_box):
@@ -761,6 +776,7 @@ def setup_options():
     # Options added by Just van den Broecke to allow usage
     # within CGI or other environments where we are not "main"
     optparser.add_option('-w', '--web', action='store_true', help='Web mode: stream (print) final result to output')
+    optparser.add_option('-i', '--image', action='store_true', help='Buffer mode: return Image as buffer')
     optparser.add_option('-A', '--points_arr', action='store_true', help='Points already stored in array')
     optparser.add_option('-c', '--gradient_color_srgba', metavar='STR', help='String of multiple (stop,R,G,B,A) doubles')
 
@@ -776,7 +792,7 @@ def go(options):
         print('%s version %s' % (sys.argv[0], version))
         sys.exit(0)
 
-    if not ((options.points or options.points_arr or options.gpx or options.load) and (options.output or options.save or options.web)):
+    if not ((options.points or options.points_arr or options.gpx or options.load) and (options.output or options.save or options.web or options.image)):
         sys.stderr.write("You must specify one input (-g -p -L) and at least one output (-o or -S).\n")
         sys.exit(1)
 
@@ -787,7 +803,7 @@ def go(options):
                 "With --gpx or --points, you must also specify at least one of --width, --height,\n --scale, or --background_image, or both --osm and --zoom.\n")
         sys.exit(1)
 
-    if options.output or options.web:
+    if options.output or options.web or options.image:
         colormap = ColorMap()
         if options.gradient:
             from PIL import Image
@@ -915,6 +931,10 @@ def go(options):
             # Added by Just van den Broecke
             # stream image to web browser
             imageMaker.StreamPNG()
+        elif options.image:
+            # Added by Just van den Broecke
+            # stream image to web browser
+            return imageMaker.ReturnPNG()
 
         printtime('END - all done')
 
@@ -925,6 +945,7 @@ def go(options):
         matrix.projection = projection
         pickle.dump(matrix, open(options.save, 'w'), 2)
 
+    return
 
 # Main entry into module
 # Adapted with "args" by Just van den Broecke to allow invokation
@@ -935,7 +956,7 @@ def main(args=None, points=None):
     if points:
         opts.points_arr_arr = points
 
-    go(opts)
+    return go(opts)
 
 if __name__ == '__main__':
     main()

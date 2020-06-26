@@ -33,64 +33,54 @@ from postgis.PostGIS import PostGIS,Feature
 # MapGlow MapScript WMS handler
 class MapGlowMS:
     def __init__(self, mapfile_path):
-        self.map_file = mapscript.mapObj(mapfile_path)
+        self.map = mapscript.mapObj(mapfile_path)
 
         # Determine root application dir: all paths relative from here
         self.root_dir = os.path.dirname(__file__) + '/../'
 
     # Main entry: handle any WMS/WFS request
     # Only catch heatmap-specific requests. Forward all others to the MapServer dispathcer
-    def ows_req(self, env, start_response):
-        try:
-            # http://mapserver.org/ogc/mapscript.html#python-examples
-            ows_req = mapscript.OWSRequest()
-            ows_req.loadParamsFromURL(env['QUERY_STRING'])
-            req_str = ows_req.getValueByName('REQUEST')
-            styles =  ows_req.getValueByName('STYLES')
-            do_heatmap = styles and styles.startswith('heat')
+    def ows_req(self):
+        # http://mapserver.org/ogc/mapscript.html#python-examples
+        ows_req = mapscript.OWSRequest()
+        ows_req.loadParams()
+        req_str = ows_req.getValueByName('REQUEST')
+        styles =  ows_req.getValueByName('STYLES')
 
-            # Filter out "graphic" WMS requests
-            content = None
-            if req_str == 'GetMap' and do_heatmap:
-                # content = self.test_image()
-                content = self.wms_getheatmap_req(ows_req)
-            elif req_str == 'GetLegendGraphic':
-                # GetLegendGraphic may have a optional STYLE parameter
-                # if this indicates a heatmap style defer to our own implementation
-                # to return heatmap gradient image as style for now.
-                style = ows_req.getValueByName('STYLE')
-                if style and style.startswith('heat'):
-                    content = self.wms_getheatmaplegend_req(ows_req)
+        do_heatmap = styles and styles.startswith('heat')
 
-            if content:
-                start_response('200 OK', [('Content-type', 'image/png'),  ('MapGlow-sends', 'greetings')])
-                return content
-        except Exception as err:
-            start_response('500 Heatmap Error', [('Content-type', 'text/plain'), ('Error-msg', str(err))])
-            return ''
+         # Filter out "graphic" WMS requests
+        if req_str == 'GetMap' and do_heatmap:
+            self.wms_getheatmap_req(ows_req)
+            return
+        elif req_str == 'GetLegendGraphic':
+            # GetLegendGraphic may have a optional STYLE parameter
+            # if this indicates a heatmap style defer to our own implementation
+            # to return heatmap gradient image as style for now.
+            style = ows_req.getValueByName('STYLE')
+            if style and style.startswith('heat'):
+                self.wms_getheatmaplegend_req(ows_req)
+                return
 
         # All other OWS (WFS/WMS-non-graphic) are XML-based
         # and can be dispatched/returned directly
         ows_req.setParameter('STYLES', '')
         mapscript.msIO_installStdoutToBuffer()
-        try:
-            status = self.map_file.OWSDispatch(ows_req)
-        except Exception as err:
-            pass
-
-        content_type = mapscript.msIO_stripStdoutBufferContentType()
+        self.map.OWSDispatch(ows_req)
 
         if req_str == 'GetMap':
             content = mapscript.msIO_getStdoutBufferBytes()
         else:
+            content_type = mapscript.msIO_stripStdoutBufferContentType()
             content = mapscript.msIO_getStdoutBufferString()
 
             if content_type == 'vnd.ogc.se_xml' or content_type == 'application/vnd.ogc.wms_xml' or content_type == 'application/vnd.ogc.gml':
                 content_type = 'text/xml'
 
-        start_response('200 OK', [('Content-type', str(content_type))])
+            print('Content-type: ' + str(content_type))
+            print
 
-        return content
+        print(content)
 
     def wms_getheatmap_req(self, wms_req):
         # http://mapserver.org/ogc/mapscript.html#python-examples
@@ -126,29 +116,24 @@ class MapGlowMS:
         bbox='%f,%f,%f,%f' % (pointLL.GetX(),pointLL.GetY(),pointUR.GetX(),pointUR.GetY())
         bboxLL='%f,%f,%f,%f' % (pointLL.GetY(),pointLL.GetX(),pointUR.GetY(),pointUR.GetX())
 
-        printtime('ows_req: wms_getheatmap_req2')
         # Do not use internal WFS (too slow)
         # points = self.get_layer_points_wfs(layer, bbox, max_features)
 
         # Get points from the layer (direct layer query)
 
-        layerObj = self.map_file.getLayerByName(layer)
+        layerObj = self.map.getLayerByName(layer)
         points = []
         if layerObj:
             # see if layer has configured feature density
             # this determines max number of features for Layer query
-            # return [str(layerObj.metadata.numitems)]
-            feature_density = 0.002 # float(layerObj.metadata.get('mapglow_feat_density'))
-            printtime('ows_req: wms_getheatmap_req3 metadata=%s' % str(layerObj.metadata.numitems))
+            feature_density = float(layerObj.metadata.get('mapglow_feat_density', '0.002'))
 
             # calculate max features for Layer query
             max_features = int(round(feature_density * width * height))
-            printtime('ows_req: wms_getheatmap_req4')
 
             # get array of Point objects from Layer
             printtime("START - get points from layer max_features=" + str(max_features))
             points = self.get_layer_points(layerObj, bbox, max_features)
-
             printtime('Got ' + str(len(points)) + ' points from layer')
 
         # No points: generate transparent overlay image using standard MS dispatch
@@ -158,8 +143,9 @@ class MapGlowMS:
             # MS does not like the heatmap-style STYLES
             wms_req.setParameter('STYLES', '')
 
-            self.map_file.OWSDispatch(wms_req)
-            return mapscript.msIO_getStdoutBufferBytes()
+            self.map.OWSDispatch(wms_req)
+            print(mapscript.msIO_getStdoutBufferBytes())
+            return
 
         # Get heatmap algoritm+parms
         # Now 1 type in STYLES, e.g. 'heat/seth/red-yellow-green/12/0.5'
@@ -184,7 +170,7 @@ class MapGlowMS:
             gradient_option_value = gradient
 
         # Assemble arguments
-        args = ["--image",
+        args = ["--web",
                 "--points_arr",
                 "--radius", radius,
                 "--decay", decay,
@@ -193,9 +179,8 @@ class MapGlowMS:
                 gradient_option_name, gradient_option_value,
                 "--extent", bboxLL]
 
-        # Creates and returns the heatmap
-        printtime('Calling main with args=%s' % str(args))
-        return main(args, points)
+        # Creates and sends the heatmap
+        main(args, points)
 
     # Handle GetLegendGraphic WMS service for STYLE as heatmap
     def wms_getheatmaplegend_req(self, req):
@@ -217,39 +202,38 @@ class MapGlowMS:
 
             # Send gradient image
             if f:
+                sys.stdout.write('Content-Type: image/png\r\n\r\n')
                 f.seek(0)
-                return f.read()
+                sys.stdout.write(f.read())
 
-        except Exception as err:
-            raise Exception(str(err))
+        except Exception as inst:
+            print("Content-type: text/plain\n\n")
+            print("Exception while generating legend")
+            print(type(inst))     # the exception instance
+            print(inst.args)      # arguments stored in .args
+            print(inst)
+            # For now anything can go wrong
+            return
 
    # Get points from layer using query on MS layer object
     def get_layer_points(self, layer, bbox_str, max_features):
-        printtime('ows_req: get_layer_points0')
         if layer.connectiontype == mapscript.MS_POSTGIS:
             # Do direct PostGIS access: 1) is much faster and 2) mapscript problems with !BOX! in complex query
-            return self.get_layer_points_postgis(layer, bbox_str, max_features)
+           return self.get_layer_points_postgis(layer, bbox_str, max_features)
         else:
-            printtime('ows_req: get_layer_points1')
-            return self.get_layer_points_layer(layer, bbox_str, max_features)
+           return self.get_layer_points_layer(layer, bbox_str, max_features)
 
     # Get points from layer using query on MS layer object
     def get_layer_points_layer(self, layer, bbox_str, max_features):
+        # print("Content-type: text/plain\n\n")
+
         points = []
 
-        printtime('ows_req: get_layer_points_layer0')
+        status = layer.open()
         bbox_arr = [float(x) for x in bbox_str.split(',')]
-        
         rect = mapscript.rectObj(bbox_arr[0], bbox_arr[1], bbox_arr[2], bbox_arr[3])
-        printtime('ows_req: get_layer_points_layer2 rect=%s fun=%s' % (str(rect), str(layer.queryByRect)))
-
-        # layer.open()
-        # printtime('ows_req: get_layer_points_layer2.5 status=%s' % str(status))
-
-        res = layer.queryByRect(self.map_file, rect)
-        printtime('ows_req: get_layer_points_layer3 res=%s' % str(res))
-        if res == mapscript.MS_FAILURE:
-            printtime('queryByRect failed')
+        if layer.queryByRect(self.map, rect) == mapscript.MS_FAILURE:
+            # print('queryByRect failed')
             return points
 
         # Query success and points found: create Points array from result
@@ -388,7 +372,7 @@ class MapGlowMS:
 
         mapscript.msIO_installStdoutToBuffer()
 
-        self.map_file.OWSDispatch(wfs_req)
+        self.map.OWSDispatch(wfs_req)
     #    print 'bbox=' + wms_req.getValueByName('BBOX')
         mapscript.msIO_stripStdoutBufferContentType()
         content = mapscript.msIO_getStdoutBufferString()
@@ -409,9 +393,9 @@ class MapGlowMS:
         points_file = self.root_dir+ 'data/schoorl-1000.coords'
 
         # args = ["--points", points_file, "--output", out_file, "--width", "600"]
-        args = ["--points", points_file, "--radius", "5", "--decay", "0.9", "--image", "--width", "400", "--gradient",
+        args = ["--points", points_file, "--radius", "5", "--decay", "0.9", "--web", "--width", "400", "--gradient",
                 self.root_dir + "config/gradients/gradient-red-yellow-trans2.png"]
-        return main(args)
+        main(args)
 
 # Parse WFS GetFeature response into Point array
 class WFSParser:
