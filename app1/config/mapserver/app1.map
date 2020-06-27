@@ -1,46 +1,52 @@
 MAP
-  IMAGETYPE      PNG
-  EXTENT 4 50 6 54
-  OUTPUTFORMAT
-    NAME "png"
-    DRIVER AGG/PNG
-    MIMETYPE "image/png"
-    IMAGEMODE RGB
-    EXTENSION "png"
-    FORMATOPTION "GAMMA=0.75"
-    FORMATOPTION "INTERLACE=OFF"
-  END
-
-  SIZE           400 300
-  IMAGECOLOR     255 255 255
-  SHAPEPATH ../../data
-
-  PROJECTION
-     "init=epsg:4326"
-  END
-
-  SYMBOL
-    NAME "circle"
-    TYPE ellipse
-    FILLED true
-    POINTS
-      1 1
+    CONFIG "MS_ERRORFILE" "/app1/log/ms_error.txt"
+    DEBUG 5
+    CONFIG "CPL_DEBUG" "ON"
+    CONFIG "PROJ_DEBUG" "ON"
+    IMAGETYPE      PNG
+    EXTENT 4 50 6 54
+    STATUS ON
+    OUTPUTFORMAT
+        NAME "png"
+        DRIVER AGG/PNG
+        MIMETYPE "image/png"
+        IMAGEMODE RGB
+        EXTENSION "png"
+        FORMATOPTION "GAMMA=0.75"
+        FORMATOPTION "INTERLACE=OFF"
     END
-  END
 
-  WEB
+    SIZE           400 300
+    IMAGECOLOR     255 255 255
+    # SHAPEPATH ../../data
+
+    PROJECTION
+     "init=epsg:4326"
+    END
+
+    SYMBOL
+        NAME "circle"
+        TYPE ellipse
+        FILLED true
+        POINTS
+          1 1
+        END
+    END
+
+    WEB
+      LOG "/app1/log/mapserver.log"
       METADATA
         "ows_enable_request"   "*"
-		"ows_title"                  "WMS/WFS Server for MapGlow Demos" ## REQUIRED
-#		"ows_extent" 				 "3 50 6 54"
-		"wms_srs" 					 "epsg:4326 epsg:3857 epsg:900913"
-		"wfs_srs"                    "epsg:4326" ## Recommended
-#		"wfs_maxfeatures"			  "5000"
-		"ows_onlineresource"         "http://mapglow.org/wms?" ## Recommended
-		"ows_service_onlineresource"  "http://mapglow.org/wms?" ## Recommended
-		"ows_abstract"               "This service demonstrates dynamic heatmap generation using standard WMS " ## Recommended
+        "ows_title"                  "WMS/WFS Server for MapGlow Demos" ## REQUIRED
+    #		"ows_extent" 				 "3 50 6 54"
+        "wms_srs" 					 "epsg:4326 epsg:3857 epsg:900913"
+        "wfs_srs"                    "epsg:4326" ## Recommended
+    #		"wfs_maxfeatures"			  "5000"
+        "ows_onlineresource"         "http://mapglow.org/wms?" ## Recommended
+        "ows_service_onlineresource"  "http://mapglow.org/wms?" ## Recommended
+        "ows_abstract"               "This service demonstrates dynamic heatmap generation using standard WMS " ## Recommended
       END
-  END
+    END
 
 
   # Start of LAYER DEFINITIONS ------------
@@ -93,7 +99,7 @@ MAP
 
 	LAYER
 		NAME brandweer
-		STATUS ON
+		STATUS default
 		TYPE POINT
         PROJECTION
           "init=epsg:4326"
@@ -124,34 +130,32 @@ MAP
 
 	LAYER
 		NAME nlpubs
-		STATUS ON
+		STATUS default
 		TYPE POINT
         PROJECTION
           "init=epsg:4326"
         END
 
-		METADATA
-        "wfs_title"             "NL Pubs from OSM POIs"
-        "wfs_version" 			"1.1.0"
-        "wfs_extent" 			"4 50 6 54"
-        "wfs_bbox_extended"     "true"
-        "wfs_enable_request"     "*"
-        "wfs_srs" 				"epsg:4326 epsg:3857 epsg:900913"
-        "wfs_include_items"       "all"
-        "gml_include_items"       "all"
-        "gml_geometries"          "geom"
-        "wms_title"             "NL Pubs from OSM POIs"
-        "wms_srs" 				"epsg:4326 epsg:3857 epsg:900913"
-        "wms_extent" 			"4 50 6 54"
-        "wms_feature_info_mime_type" "text/xml"
-        "mapglow_feat_density"	 "0.002"
-        #"gml_featureid"         "INC_ID"
+        METADATA
+            "wfs_title"             "NL Pubs from OSM POIs"
+            "wfs_version" 			"1.1.0"
+            "wfs_extent" 			"4 50 6 54"
+            "wfs_bbox_extended"     "true"
+            "wfs_enable_request"    "*"
+            "wfs_srs" 				"epsg:4326 epsg:3857 epsg:900913"
+            "wfs_include_items"     "all"
+            "gml_include_items"     "all"
+            "gml_geometries"        "geom"
+            "wms_title"             "NL Pubs from OSM POIs"
+            "wms_srs" 				"epsg:4326 epsg:3857 epsg:900913"
+            "wms_extent" 			"4 50 6 54"
+            "wms_feature_info_mime_type" "text/xml"
+            "mapglow_feat_density"	 "0.002"
 		END
 
         CONNECTIONTYPE OGR
-        CONNECTION "pubs/osm-nl-pub.json"
-
-        DUMP TRUE
+        CONNECTION "/app1/data/pubs"
+        DATA "osm-nl-pub"
 		TEMPLATE "/app1/config/mapserver/template.html"
 
         CLASS
@@ -162,7 +166,5 @@ MAP
 			SIZE 10
           END
         END
-
 	END
 END
-

@@ -14,7 +14,8 @@ services:
     # restart: unless-stopped
     environment:
       - MS_MAPFILE=/app1/config/mapserver/app1.map
-
+      - DEBUG=1
+      
     labels:
       # v2 config
       - "traefik.enable=true"

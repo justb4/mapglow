@@ -1,0 +1,2 @@
+[Sat Jun 27 14:11:58 2020].569529 getSymbol(): Symbol definition error. Parsing error near (OGR):(line 157)
+[Sat Jun 27 14:11:58 2020].569802 msFreeMap(): freeing map at 0x5637f1a4e670.

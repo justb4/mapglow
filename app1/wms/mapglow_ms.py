@@ -237,7 +237,7 @@ class MapGlowMS:
     def get_layer_points_layer(self, layer, bbox_str, max_features):
         points = []
 
-        printtime('ows_req: get_layer_points_layer0')
+        printtime('ows_req: get_layer_points_layer0 python version=%s' % sys.version)
         bbox_arr = [float(x) for x in bbox_str.split(',')]
         
         rect = mapscript.rectObj(bbox_arr[0], bbox_arr[1], bbox_arr[2], bbox_arr[3])
@@ -245,7 +245,18 @@ class MapGlowMS:
 
         # layer.open()
         # printtime('ows_req: get_layer_points_layer2.5 status=%s' % str(status))
+        # layer = self.map_file.getLayer(2)
 
+        # line = mapscript.lineObj()
+        # line.add( mapscript.pointObj(bbox_arr[0], bbox_arr[1]))
+        # line.add( mapscript.pointObj(bbox_arr[3], bbox_arr[1]))
+        # line.add( mapscript.pointObj(bbox_arr[3], bbox_arr[3]))
+        # line.add( mapscript.pointObj(bbox_arr[0], bbox_arr[3]))
+        # poly = mapscript.shapeObj(mapscript.MS_SHAPE_POLYGON)
+        # poly.add(line)
+        #
+        # printtime('ows_req: get_layer_points_layer2 shape=%s' % str(line))
+        # res = layer.queryByShape(self.map_file, poly)
         res = layer.queryByRect(self.map_file, rect)
         printtime('ows_req: get_layer_points_layer3 res=%s' % str(res))
         if res == mapscript.MS_FAILURE:
