@@ -1,5 +1,7 @@
 FROM debian:buster-slim
 # Very simple and slim MapServer Docker image
+# Inspired by: https://hub.docker.com/r/camptocamp/mapserver/dockerfile
+# and: https://github.com/PDOK/mapserver-docker
 
 LABEL maintainer="Just van den Broecke <just@justobjects.nl>"
 
