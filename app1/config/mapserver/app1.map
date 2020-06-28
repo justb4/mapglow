@@ -97,40 +97,41 @@ MAP
  	END
   END # layer ends here
 
-	LAYER
-		NAME brandweer
-		STATUS default
-		TYPE POINT
+    LAYER
+        NAME brandweer
+        STATUS ON
+        TYPE POINT
         PROJECTION
           "init=epsg:4326"
         END
-		EXTENT 4 50 6 54
-		METADATA
-			"ows_title"             "Brandweer Amsterdam 2006-2010" ##REQUIRED
-			"wfs_version" 			"1.1.0"
+        METADATA
+            "ows_title"             "Brandweer Amsterdam 2006-2010" ##REQUIRED
+            "wfs_version" 			"1.1.0"
             "wms_srs" 				"epsg:4326 epsg:3857 epsg:900913"
             "wfs_srs" 				"epsg:4326 epsg:3857 epsg:900913"
-			"gml_include_items"     "all" ## Optional (serves all attributes for layer)
-	 		"wms_feature_info_mime_type" "text/xml"
+            "gml_include_items"     "all" ## Optional (serves all attributes for layer)
+            "wms_feature_info_mime_type" "text/xml"
             "mapglow_feat_density"	 "0.002" # density of features per pixel (max features per query = width * height * density)
- #			"gml_featureid"         "INC_ID" ## REQUIRED
-		END
-		# CONNECTIONTYPE OGR
-   	    # CONNECTION "brandweer/brandweer.shp"
-		DATA brandweer/brandweer.shp
-    	DUMP TRUE             ## REQUIRED  FOR WFS
-		TOLERANCE 10
-		TEMPLATE "template.html"
-		CLASS
-			COLOR 255 0 51
+    #			"gml_featureid"         "INC_ID" ## REQUIRED
+        END
+
+        CONNECTIONTYPE OGR
+        CONNECTION "/app1/data/brandweer"
+        DATA "brandweer"
+        TEMPLATE "/app1/config/mapserver/template.html"
+        CLASS
+          NAME "brandweer"
+          STYLE
+            COLOR 255 0 51
 			SYMBOL "circle"
 			SIZE 5
-		END
-	END
+          END
+        END
+    END
 
 	LAYER
 		NAME nlpubs
-		STATUS default
+		STATUS ON
 		TYPE POINT
         PROJECTION
           "init=epsg:4326"
@@ -142,7 +143,7 @@ MAP
             "wfs_extent" 			"4 50 6 54"
             "wfs_bbox_extended"     "true"
             "wfs_enable_request"    "*"
-            "wfs_srs" 				"epsg:4326 epsg:3857 epsg:900913"
+            "wfs_srs" 				"epsg:4326 epsg:3857"
             "wfs_include_items"     "all"
             "gml_include_items"     "all"
             "gml_geometries"        "geom"

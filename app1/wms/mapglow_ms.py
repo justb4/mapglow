@@ -153,6 +153,7 @@ class MapGlowMS:
 
         # No points: generate transparent overlay image using standard MS dispatch
         if len(points) <= 0:
+            printtime('len points is 0?')
             mapscript.msIO_installStdoutToBuffer()
 
             # MS does not like the heatmap-style STYLES
@@ -164,6 +165,7 @@ class MapGlowMS:
         # Get heatmap algoritm+parms
         # Now 1 type in STYLES, e.g. 'heat/seth/red-yellow-green/12/0.5'
         # TODO: parameters are heatmap-type specific
+        printtime("STYLES=%s" % wms_req.getValueByName('STYLES'))
         (heat, heatmap_type, gradient, radius, decay) = wms_req.getValueByName('STYLES').split('/')
 
         # Just to protect ourselves from blowing up
@@ -171,7 +173,9 @@ class MapGlowMS:
             radius = '20'
 
         # check how gradient is specified: either a gradient file or a range of doubles (stop, R, G, B, A)
-        gradient_path = self.root_dir+ 'config/gradients/gradient-' + gradient +'.png'
+        gradient_path = self.root_dir + 'config/gradients/gradient-' + gradient +'.png'
+        printtime("gradient_path=%s" % gradient_path)
+
         if os.path.exists(gradient_path):
             # Gradient as file
             gradient_option_name = '--gradient'
@@ -270,27 +274,24 @@ class MapGlowMS:
         # Return at most max_features by skipping points in the array
         skip_count = (n_res / max_features) + 1
 
-        # print('QUERY OK: results=' + str(n_res) + ' skip_count=' + str(skip_count))
+        printtime('QUERY OK: results=' + str(n_res) + ' skip_count=' + str(skip_count))
         for j in range(n_res):
             # Skip when remainder not 0
             if j % skip_count:
                 # print('skip j=' + str(j))
                 continue
 
-            # print('do j=' + str(j))
-            res = results.getResult(j)
-            # print('res=' + str(res))
+            printtime('do j=' + str(j))
+            result = results.getResult(j)
+            printtime('Next result=%s' % str(result))
+            shape = layer.getShape(result)
+            printtime('Next feature=%s' % str(shape))
 
-            # later version may use  resultsGetShape() ??
-            # see: http://www.mail-archive.com/mapserver-users@lists.osgeo.org/msg11286.html
-            # shp = mapscript.shapeObj(mapscript.MS_SHAPE_NULL)
-            # shp = layer.resultsGetShape(shp, res.shapeindex)
-            shp = layer.getFeature(res.shapeindex, res.tileindex)
-
-            shp_point = shp.get(0).get(0)
+            shp_point = shape.get(0).get(0)
             point = Point((shp_point.y, shp_point.x))
             points.append(point)
 
+        printtime('Returning points: points=%s' % str(points))
         layer.close()
         return points
 

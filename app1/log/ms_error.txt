@@ -1,2 +1,196 @@
 [Sat Jun 27 14:11:58 2020].569529 getSymbol(): Symbol definition error. Parsing error near (OGR):(line 157)
 [Sat Jun 27 14:11:58 2020].569802 msFreeMap(): freeing map at 0x5637f1a4e670.
+[Sun Jun 28 09:34:19 2020].764745 msFreeMap(): freeing map at 0x7f2f3c005c80.
+[Sun Jun 28 09:34:29 2020].846178 msDrawMap(): rendering using outputformat named png (AGG/PNG).
+[Sun Jun 28 09:34:29 2020].846242 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Sun Jun 28 09:34:29 2020].848425 msShapefileOpen(): Unable to access file. (/app1/config/mapserver/brandweer/brandweer.shp)
+[Sun Jun 28 09:34:29 2020].848480 msShapefileOpen(): Unable to access file. (/app1/config/mapserver/brandweer/brandweer.shp)
+[Sun Jun 28 09:34:29 2020].848498 msDrawMap(): Image handling error. Failed to draw layer named 'brandweer'.
+[Sun Jun 28 09:34:29 2020].915673 msFreeMap(): freeing map at 0x7f2f3c005c80.
+[Sun Jun 28 09:35:01 2020].58105 msFreeMap(): freeing map at 0x7f2f3c005c80.
+[Sun Jun 28 09:35:01 2020].177253 msFreeMap(): freeing map at 0x7f2f3c005c80.
+[Sun Jun 28 09:35:51 2020].296948 msDrawMap(): rendering using outputformat named png (AGG/PNG).
+[Sun Jun 28 09:35:51 2020].297040 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Sun Jun 28 09:35:51 2020].300386 msShapefileOpen(): Unable to access file. (/app1/config/mapserver/brandweer/brandweer.shp)
+[Sun Jun 28 09:35:51 2020].300449 msShapefileOpen(): Unable to access file. (/app1/config/mapserver/brandweer/brandweer.shp)
+[Sun Jun 28 09:35:51 2020].300472 msDrawMap(): Image handling error. Failed to draw layer named 'brandweer'.
+[Sun Jun 28 09:35:51 2020].389765 msFreeMap(): freeing map at 0x7f2f3c005c80.
+[Sun Jun 28 09:36:36 2020].718587 msFreeMap(): freeing map at 0x7f2f3c005c80.
+[Sun Jun 28 09:39:41 2020].867493 msDrawMap(): rendering using outputformat named png (AGG/PNG).
+[Sun Jun 28 09:39:41 2020].867574 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Sun Jun 28 09:39:41 2020].868939 msShapefileOpen(): Unable to access file. (/app1/config/mapserver/brandweer/brandweer.shp)
+[Sun Jun 28 09:39:41 2020].869005 msShapefileOpen(): Unable to access file. (/app1/config/mapserver/brandweer/brandweer.shp)
+[Sun Jun 28 09:39:41 2020].869035 msDrawMap(): Image handling error. Failed to draw layer named 'brandweer'.
+[Sun Jun 28 09:39:41 2020].900145 msFreeMap(): freeing map at 0x7f2f3ca347f0.
+[Sun Jun 28 09:41:34 2020].914680 msFreeMap(): freeing map at 0x7f2f3ca347f0.
+[Sun Jun 28 09:42:03 2020].76140 msDrawMap(): rendering using outputformat named png (AGG/PNG).
+[Sun Jun 28 09:42:03 2020].76270 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Sun Jun 28 09:42:04 2020].156013 msDrawMap(): Layer 1 (brandweer), 1.080s
+[Sun Jun 28 09:42:04 2020].175801 msDrawMap(): Layer 2 (nlpubs), 0.020s
+[Sun Jun 28 09:42:04 2020].176388 msDrawMap(): Drawing Label Cache, 0.000s
+[Sun Jun 28 09:42:04 2020].176451 msDrawMap() total time: 1.105s
+[Sun Jun 28 09:42:04 2020].213433 msSaveImage(stdout) total time: 0.037s
+[Sun Jun 28 09:42:04 2020].224389 msFreeMap(): freeing map at 0x7f2f3ca347f0.
+[Sun Jun 28 09:44:01 2020].331855 msDrawMap(): rendering using outputformat named png (AGG/PNG).
+[Sun Jun 28 09:44:01 2020].331928 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Sun Jun 28 09:44:02 2020].189946 msDrawMap(): Layer 1 (brandweer), 0.858s
+[Sun Jun 28 09:44:02 2020].219267 msDrawMap(): Layer 2 (nlpubs), 0.029s
+[Sun Jun 28 09:44:02 2020].219696 msDrawMap(): Drawing Label Cache, 0.000s
+[Sun Jun 28 09:44:02 2020].219731 msDrawMap() total time: 0.889s
+[Sun Jun 28 09:44:02 2020].293239 msSaveImage(stdout) total time: 0.073s
+[Sun Jun 28 09:44:02 2020].302529 msFreeMap(): freeing map at 0x7f2f3ca347f0.
+[Sun Jun 28 09:44:24 2020].790406 msDrawMap(): rendering using outputformat named png (AGG/PNG).
+[Sun Jun 28 09:44:24 2020].790521 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Sun Jun 28 09:44:25 2020].574414 msDrawMap(): Layer 1 (brandweer), 0.784s
+[Sun Jun 28 09:44:25 2020].597213 msDrawMap(): Layer 2 (nlpubs), 0.023s
+[Sun Jun 28 09:44:25 2020].597339 msDrawMap(): Drawing Label Cache, 0.000s
+[Sun Jun 28 09:44:25 2020].597359 msDrawMap() total time: 0.808s
+[Sun Jun 28 09:44:25 2020].630402 msSaveImage(stdout) total time: 0.033s
+[Sun Jun 28 09:44:25 2020].630563 msFreeMap(): freeing map at 0x7f2f3c005c20.
+[Sun Jun 28 09:45:11 2[Sun Jun 28 09:34:19 2020].637508 msFreeMap(): freeing map at 0x7f2f38005ec0.
+[Sun Jun 28 09:34:19 2020].745685 msWMSGetLegendGraphic(): Image handling error. Unsupported output format (image/gif).
+[Sun Jun 28 09:34:19 2020].745793 msFreeMap(): freeing map at 0x7f2f38005ec0.
+[Sun Jun 28 09:35:01 2020].53914 msFreeMap(): freeing map at 0x7f2f38005e60.
+[Sun Jun 28 09:35:01 2020].185348 msWMSGetLegendGraphic(): Image handling error. Unsupported output format (image/gif).
+[Sun Jun 28 09:35:01 2020].185482 msFreeMap(): freeing map at 0x7f2f38015aa0.
+[Sun Jun 28 09:36:15 2020].421148 msFreeMap(): freeing map at 0x7f2f38015a20.
+[Sun Jun 28 09:37:25 2020].57764 msFreeMap(): freeing map at 0x7f2f3801b5b0.
+[Sun Jun 28 09:40:04 2020].83309 msDrawMap(): rendering using outputformat named png (AGG/PNG).
+[Sun Jun 28 09:40:04 2020].83405 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Sun Jun 28 09:40:04 2020].86289 msShapefileOpen(): Unable to access file. (/app1/config/mapserver/brandweer/brandweer.shp)
+[Sun Jun 28 09:40:04 2020].86370 msShapefileOpen(): Unable to access file. (/app1/config/mapserver/brandweer/brandweer.shp)
+[Sun Jun 28 09:40:04 2020].86395 msDrawMap(): Image handling error. Failed to draw layer named 'brandweer'.
+[Sun Jun 28 09:40:04 2020].119364 msFreeMap(): freeing map at 0x7f2f3801b5b0.
+[Sun Jun 28 09:41:54 2020].35850 msDrawMap(): rendering using outputformat named png (AGG/PNG).
+[Sun Jun 28 09:41:54 2020].35960 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Sun Jun 28 09:41:55 2020].886438 msDrawMap(): Layer 1 (brandweer), 1.850s
+[Sun Jun 28 09:41:55 2020].917550 msDrawMap(): Layer 2 (nlpubs), 0.031s
+[Sun Jun 28 09:41:55 2020].918129 msDrawMap(): Drawing Label Cache, 0.000s
+[Sun Jun 28 09:41:55 2020].918175 msDrawMap() total time: 1.886s
+[Sun Jun 28 09:41:55 2020].968963 msSaveImage(stdout) total time: 0.051s
+[Sun Jun 28 09:41:55 2020].969262 msFreeMap(): freeing map at 0x7f2f384a7930.
+[Sun Jun 28 09:43:18 2020].812745 msDrawMap(): rendering using outputformat named png (AGG/PNG).
+[Sun Jun 28 09:43:18 2020].812937 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Sun Jun 28 09:43:19 2020].519748 msDrawMap(): Layer 1 (brandweer), 0.707s
+[Sun Jun 28 09:43:19 2020].538939 msDrawMap(): Layer 2 (nlpubs), 0.019s
+[Sun Jun 28 09:43:19 2020].539061 msDrawMap(): Drawing Label Cache, 0.000s
+[Sun Jun 28 09:43:19 2020].539079 msDrawMap() total time: 0.727s
+[Sun Jun 28 09:43:19 2020].585193 msSaveImage(stdout) total time: 0.046s
+[Sun Jun 28 09:43:19 2020].585349 msFreeMap(): freeing map at 0x7f2f384a7930.
+[Sun Jun 28 09:44:15 2020].783834 msDrawMap(): rendering using outputformat named png (AGG/PNG).
+[Sun Jun 28 09:44:15 2020].783950 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Sun Jun 28 09:44:16 2020].154820 msDrawMap(): Layer 1 (brandweer), 0.371s
+[Sun Jun 28 09:44:16 2020].172558 msDrawMap(): Layer 2 (nlpubs), 0.018s
+[Sun Jun 28 09:44:16 2020].172690 msDrawMap(): Drawing Label Cache, 0.000s
+[Sun Jun 28 09:44:16 2020].172754 msDrawMap() total time: 0.389s
+[Sun Jun 28 09:44:16 2020].203541 msSaveImage(stdout) total time: 0.031s
+[Sun Jun 28 09:44:16 2020].203682 msFreeMap(): freeing map at 0x7f2f384a7930.
+[Sun Jun 28 09:44:50 2020].968107 msDrawMap(): rendering using outputformat named png (AGG/PNG).
+[Sun Jun 28 09:44:50 2020].968154 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Sun Jun 28 09:44:51 2020].258498 msDrawMap(): Layer 1 (brandweer), 0.290s
+[Sun Jun 28 09:44:51 2020].276350 msDrawMap(): Layer 2 (nlpubs), 0.018s
+[Sun Jun 28 09:44:51 2020].276492 msDrawMap(): Drawing Label Cache, 0.000s
+[Sun Jun 28 09:44:51 2020].276521 msDrawMap() total time: 0.309s
+[Sun Jun 28 09:44:51 2020].301352 msSaveImage(stdout) total time: 0.025s
+[Sun Jun 28 09:44:51 2020].301485 msFreeMap(): freeing map at 0x7f2f384a7930.
+[Sun Jun 28 09:45:20 2020].308950 msDrawMap(): rendering using outputformat named png (AGG/PNG).
+[Sun Jun 28 09:45:20 2020].308996 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Sun Jun 28 09:45:20 2020].608026 msDrawMap(): Layer 1 (brandweer), 0.299s
+[Sun Jun 28 09:45:20 2020].633211 msDrawMap(): Layer 2 (nlpubs), 0.025s[Sun Jun 28 09:34:19 2020].631988 msFreeMap(): freeing map at 0x7f2f44005ec0.
+[Sun Jun 28 09:34:19 2020].758726 msWMSGetLegendGraphic(): Image handling error. Unsupported output format (image/gif).
+[Sun Jun 28 09:34:19 2020].762650 msFreeMap(): freeing map at 0x7f2f44005ec0.
+[Sun Jun 28 09:35:01 2020].48946 msFreeMap(): freeing map at 0x7f2f44013550.
+[Sun Jun 28 09:35:01 2020].121217 msFreeMap(): freeing map at 0x7f2f440167a0.
+[Sun Jun 28 09:35:45 2020].907809 msDrawMap(): rendering using outputformat named png (AGG/PNG).
+[Sun Jun 28 09:35:45 2020].907881 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Sun Jun 28 09:35:45 2020].909485 msShapefileOpen(): Unable to access file. (/app1/config/mapserver/brandweer/brandweer.shp)
+[Sun Jun 28 09:35:45 2020].909555 msShapefileOpen(): Unable to access file. (/app1/config/mapserver/brandweer/brandweer.shp)
+[Sun Jun 28 09:35:45 2020].909580 msDrawMap(): Image handling error. Failed to draw layer named 'brandweer'.
+[Sun Jun 28 09:35:45 2020].956860 msFreeMap(): freeing map at 0x7f2f440173b0.
+[Sun Jun 28 09:36:20 2020].779787 msFreeMap(): freeing map at 0x7f2f44652b70.
+[Sun Jun 28 09:39:33 2020].337849 msDrawMap(): rendering using outputformat named png (AGG/PNG).
+[Sun Jun 28 09:39:33 2020].337934 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Sun Jun 28 09:39:33 2020].339714 msShapefileOpen(): Unable to access file. (/app1/config/mapserver/brandweer/brandweer.shp)
+[Sun Jun 28 09:39:33 2020].339785 msShapefileOpen(): Unable to access file. (/app1/config/mapserver/brandweer/brandweer.shp)
+[Sun Jun 28 09:39:33 2020].339810 msDrawMap(): Image handling error. Failed to draw layer named 'brandweer'.
+[Sun Jun 28 09:39:33 2020].344481 msFreeMap(): freeing map at 0x7f2f44652b70.
+[Sun Jun 28 09:41:33 2020].277912 msDrawMap(): rendering using outputformat named png (AGG/PNG).
+[Sun Jun 28 09:41:33 2020].277971 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Sun Jun 28 09:41:34 2020].49239 msDrawMap(): Layer 1 (brandweer), 0.771s
+[Sun Jun 28 09:41:34 2020].72272 msDrawMap(): Layer 2 (nlpubs), 0.023s
+[Sun Jun 28 09:41:34 2020].72333 msDrawMap(): Drawing Label Cache, 0.000s
+[Sun Jun 28 09:41:34 2020].72348 msDrawMap() total time: 0.795s
+[Sun Jun 28 09:41:34 2020].94784 msSaveImage(stdout) total time: 0.022s
+[Sun Jun 28 09:41:34 2020].94916 msFreeMap(): freeing map at 0x7f2f44652b70.
+[Sun Jun 28 09:41:56 2020].808073 msDrawMap(): rendering using outputformat named png (AGG/PNG).
+[Sun Jun 28 09:41:56 2020].808135 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Sun Jun 28 09:41:57 2020].594487 msDrawMap(): Layer 1 (brandweer), 0.786s
+[Sun Jun 28 09:41:57 2020].618341 msDrawMap(): Layer 2 (nlpubs), 0.023s
+[Sun Jun 28 09:41:57 2020].619043 msDrawMap(): Drawing Label Cache, 0.000s
+[Sun Jun 28 09:41:57 2020].619098 msDrawMap() total time: 0.813s
+[Sun Jun 28 09:41:57 2020].666744 msSaveImage(stdout) total time: 0.048s
+[Sun Jun 28 09:41:57 2020].666896 msFreeMap(): freeing map at 0x7f2f44652b70.
+[Sun Jun 28 09:43:25 2020].740080 msFreeMap(): freeing map at 0x7f2f44652b70.
+[Sun Jun 28 09:44:22 2020].141438 msDrawMap(): rendering using outputformat named png (AGG/PNG).
+[Sun Jun 28 09:44:22 2020].141510 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Sun Jun 28 09:44:22 2020].579244 msDrawMap(): Layer 1 (brandweer), 0.438s
+[Sun Jun 28 09:44:22 2020].600911 msDrawMap(): Layer 2 (nlpubs), 0.022s
+[Sun Jun 28 09:44:22 2020].601080 msDrawMap(): Drawing Label Cache, 0.000s
+[Sun Jun 28 09:44:22 2020].601120 msDrawMap() total time: 0.460s
+[Sun Jun 28 09:44:22 2020].630135 msSaveImage(stdout) total time: 0.029s
+[Sun Jun 28 09:44:22 2020].630308 msFreeMap(): freeing map at 0x7f2f44652b70.
+[Sun Jun 28 09:44:52 2020].570962 msFreeMap(): freeing map at 0x7f2f44652b70.
+[Sun Jun 28 09:45:21 2020].674183 msFreeMap(): freeing map at 0x7f2f44652b70.
+[Sun Jun 28 09:47:02 2020].5026 msDrawMap(): rendering using outputformat named png (AGG/PNG).
+[Sun Jun 28 09:47:02 2020].5076 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Sun Jun 28 09:47:02 2020].27090 msDrawMap(): Layer 2 (nlpubs), 0.022s
+[Sun Jun 28 09:47:02 2020].27177 msDrawMap[Sun Jun 28 09:34:19 2020].606056 msWMSGetLegendGraphic(): Image handling error. Unsupported output format (image/gif).
+[Sun Jun 28 09:34:19 2020].606637 msFreeMap(): freeing map at 0x7f2f480074c0.
+[Sun Jun 28 09:34:19 2020].703171 msFreeMap(): freeing map at 0x7f2f480272b0.
+[Sun Jun 28 09:34:19 2020].803302 msFreeMap(): freeing map at 0x7f2f48032a10.
+[Sun Jun 28 09:34:37 2020].1022 msDrawMap(): rendering using outputformat named png (AGG/PNG).
+[Sun Jun 28 09:34:37 2020].1115 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Sun Jun 28 09:34:37 2020].2575 msShapefileOpen(): Unable to access file. (/app1/config/mapserver/brandweer/brandweer.shp)
+[Sun Jun 28 09:34:37 2020].2636 msShapefileOpen(): Unable to access file. (/app1/config/mapserver/brandweer/brandweer.shp)
+[Sun Jun 28 09:34:37 2020].2662 msDrawMap(): Image handling error. Failed to draw layer named 'brandweer'.
+[Sun Jun 28 09:34:37 2020].12254 msFreeMap(): freeing map at 0x7f2f48033620.
+[Sun Jun 28 09:35:01 2020].80541 msFreeMap(): freeing map at 0x7f2f48077d30.
+[Sun Jun 28 09:35:01 2020].196813 msWMSGetLegendGraphic(): Image handling error. Unsupported output format (image/gif).
+[Sun Jun 28 09:35:01 2020].196978 msFreeMap(): freeing map at 0x7f2f4807cf90.
+[Sun Jun 28 09:36:15 2020].502864 msFreeMap(): freeing map at 0x7f2f48043580.
+[Sun Jun 28 09:37:52 2020].504127 msFreeMap(): freeing map at 0x7f2f48094e60.
+[Sun Jun 28 09:40:04 2020].568450 msFreeMap(): freeing map at 0x7f2f48095a70.
+[Sun Jun 28 09:41:55 2020].975392 msDrawMap(): rendering using outputformat named png (AGG/PNG).
+[Sun Jun 28 09:41:55 2020].975505 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Sun Jun 28 09:41:56 2020].734778 msDrawMap(): Layer 1 (brandweer), 0.759s
+[Sun Jun 28 09:41:56 2020].755892 msDrawMap(): Layer 2 (nlpubs), 0.021s
+[Sun Jun 28 09:41:56 2020].756281 msDrawMap(): Drawing Label Cache, 0.000s
+[Sun Jun 28 09:41:56 2020].756308 msDrawMap() total time: 0.783s
+[Sun Jun 28 09:41:56 2020].802152 msSaveImage(stdout) total time: 0.046s
+[Sun Jun 28 09:41:56 2020].802323 msFreeMap(): freeing map at 0x7f2f480a1c60.
+[Sun Jun 28 09:43:25 2020].679757 msFreeMap(): freeing map at 0x7f2f480a7390.
+[Sun Jun 28 09:44:16 2020].208046 msDrawMap(): rendering using outputformat named png (AGG/PNG).
+[Sun Jun 28 09:44:16 2020].208093 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Sun Jun 28 09:44:16 2020].491144 msDrawMap(): Layer 1 (brandweer), 0.283s
+[Sun Jun 28 09:44:16 2020].512770 msDrawMap(): Layer 2 (nlpubs), 0.021s
+[Sun Jun 28 09:44:16 2020].512891 msDrawMap(): Drawing Label Cache, 0.000s
+[Sun Jun 28 09:44:16 2020].512930 msDrawMap() total time: 0.305s
+[Sun Jun 28 09:44:16 2020].541792 msSaveImage(stdout) total time: 0.029s
+[Sun Jun 28 09:44:16 2020].544450 msFreeMap(): freeing map at 0x7f2f480ad5d0.
+[Sun Jun 28 09:44:25 2020].636235 msDrawMap(): rendering using outputformat named png (AGG/PNG).
+[Sun Jun 28 09:44:25 2020].636303 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Sun Jun 28 09:44:25 2020].988022 msDrawMap(): Layer 1 (brandweer), 0.352s
+[Sun Jun 28 09:44:26 2020].5187 msDrawMap(): Layer 2 (nlpubs), 0.017s
+[Sun Jun 28 09:44:26 2020].5315 msDrawMap(): Drawing Label Cache, 0.000s
+[Sun Jun 28 09:44:26 2020].5338 msDrawMap() total time: 0.370s
+[Sun Jun 28 09:44:26 2020].67409 msSaveImage(stdout) total time: 0.062s
+[Sun Jun 28 09:44:26 2020].73120 msFreeMap(): freeing map at 0x7f2f480a70e0.
+[Sun Jun 28 09:45:15 2020].430891 msFreeMap(): freeing map at 0x7f2f480b1ce0.
+[Sun Jun 28 09:46:59 2020].707075 msDrawMap(): rendering using outputformat named png (AGG/PNG).
+[Sun Jun 28 09:46:59 2020].707127 msDrawMap(): WMS/WFS set-up and query, 0.000s
+[Sun Jun 28 09:46:59 2020].730463 msDrawMap(): Layer 2 (nlpubs), 0.023s
+[Sun Jun 28 09:46:59 2020].730529 msDrawMap(): Drawing Label Cache, 0.000s
+[Sun Jun 28 09:46:59 2020].730551 msDrawMap() total time: 0.024s
+[Sun Jun 28 09:46:59 2020].744895 msSaveImage(stdout) total time: 0.014s
+[Sun Jun 28 09:46:59 2020].745029 msFreeMap(): freeing map at 0x7f2f480b6ba0.
+[Sun Jun 28 09:47:16 2020].890257 msDrawMap(): rendering using outputformat named png (AGG/PNG).
